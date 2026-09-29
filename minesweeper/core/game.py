@@ -163,6 +163,20 @@ class Game:
         self.stats.flags += 1
         return True
 
+    def chord(self, r: int, c: int) -> RevealResult:
+        """On a revealed number whose flagged neighbours equal it, reveal the rest."""
+        self._check(r, c)
+        if not self.config.chord or self.is_over or self._state[r][c] is not CellState.REVEALED:
+            return self._nothing()
+        around = neighbors(r, c, self.rows, self.cols)
+        flagged = sum(self._state[nr][nc] is CellState.FLAGGED for nr, nc in around)
+        hidden = [(nr, nc) for nr, nc in around if self._state[nr][nc] is CellState.HIDDEN]
+        if flagged != self._board.adjacent[r][c] or not hidden:
+            return self._nothing()
+        result = self._open(hidden)
+        self.stats.clicks += 1
+        return result
+
     # --- internals -------------------------------------------------------------
 
     def _check(self, r: int, c: int) -> None:
