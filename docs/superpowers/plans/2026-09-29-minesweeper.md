@@ -22,6 +22,7 @@
 - Defaults: `first_click=OPENING`, `chord=True`, `flood_fill=BFS`, `seed=None`.
 - Presets: tiny 5x5/3, beginner 9x9/10, intermediate 16x16/40, expert 16x30/99.
 - Run tests with `uv run pytest` from the project root.
+- **Cross-platform (Linux, Windows, macOS):** no OS-specific paths or shell calls; files opened with explicit `encoding="utf-8"`; console output ASCII-only; mouse bindings adapt to macOS (`aqua`), including Ctrl+click to flag; Windows opts into high-DPI awareness (guarded, best-effort).
 - Commit messages end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
 
 ## Review Focus
@@ -1855,7 +1856,7 @@ def main(argv: list[str] | None = None) -> int:
     base_seed = args.seed if args.seed is not None else 0
     records = run_batch(configs, args.solver, args.games, base_seed)
     if args.out:
-        with open(args.out, "w", newline="") as f:
+        with open(args.out, "w", newline="", encoding="utf-8") as f:
             write_csv(records, f)
     print(format_summary(summarize(records)))
     return 0
@@ -2101,6 +2102,7 @@ No unit tests (widget code is kept thin; logic lives in tested modules). Verific
 from __future__ import annotations
 
 import random
+import sys
 import tkinter as tk
 from dataclasses import replace
 from tkinter import messagebox
@@ -2205,6 +2207,8 @@ class App:
         self.canvas.bind("<Button-1>", self._on_left)
         self.canvas.bind(flag_btn, self._on_flag)
         self.canvas.bind(chord_btn, self._on_chord)
+        if aqua:  # many Mac users have no right button
+            self.canvas.bind("<Control-Button-1>", self._on_flag)
 
     # --- game lifecycle ----------------------------------------------------------
 
@@ -2443,7 +2447,20 @@ class CustomDialog(tk.Toplevel):
         self.destroy()
 
 
+def _enable_windows_dpi_awareness() -> None:
+    """Avoid a blurry, bitmap-scaled window on Windows high-DPI displays."""
+    if sys.platform != "win32":
+        return
+    try:
+        import ctypes
+
+        ctypes.windll.shcore.SetProcessDpiAwareness(1)
+    except (AttributeError, OSError):
+        pass  # older Windows: keep default scaling
+
+
 def run(config: GameConfig) -> None:
+    _enable_windows_dpi_awareness()
     root = tk.Tk()
     App(root, config)
     root.mainloop()
@@ -2496,8 +2513,8 @@ python -m minesweeper --preset expert
 python -m minesweeper --rows 12 --cols 20 --density 0.18 --first-click SAFE --seed 42
 ```
 
-Left-click reveals, right-click flags, left-click on a number (or middle-click)
-chords. *Game ▸ Custom…* exposes every option. The status bar shows the seed
+Left-click reveals, right-click flags (Ctrl+click on macOS), left-click on a
+number (or middle-click) chords. *Game ▸ Custom…* exposes every option. The status bar shows the seed
 so any board can be replayed with `--seed`.
 
 AI panel: pick a solver, **Step** makes one move (the cell is outlined and the
@@ -2526,10 +2543,21 @@ Game *i* uses seed `--seed + i`, so runs are reproducible. Prints win rate
 (95% Wilson CI), mean moves, guesses and time per configuration; `--out`
 writes one CSV row per game.
 
+## Platform notes
+
+Works on Linux, Windows and macOS with Python 3.11+ and tkinter.
+
+- **Windows:** the python.org installer includes tkinter. Use `py -m minesweeper`
+  if `python` is not on PATH.
+- **macOS:** the python.org installer includes tkinter. With Homebrew Python,
+  install it via `brew install python-tk`.
+- **Linux:** install your distro's tk package if `import tkinter` fails
+  (e.g. `sudo apt install python3-tk`, `sudo pacman -S tk`).
+
 ## Development
 
 ```bash
-uv run pytest
+uv run pytest          # or: python -m pip install pytest && python -m pytest
 ```
 ````
 
@@ -2548,6 +2576,7 @@ Expected: exits with code 2 and `error: the GUI takes a single --density value, 
 
 Run: `uv run python -m minesweeper --preset beginner`
 Check:
+0. Team check on Windows and macOS: same steps, plus Ctrl+click flags on macOS.
 1. First left-click opens an area; numbers are coloured; right-click toggles ⚑ and the mine counter changes (can go negative).
 2. Left-click on a satisfied number chords.
 3. Hitting a mine: red ✹ on the hit cell, other mines shown, wrong flags show ✗, face ☹, timer stops, clicks ignored.
