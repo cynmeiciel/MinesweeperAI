@@ -4,7 +4,6 @@ from __future__ import annotations
 import csv
 import logging
 import math
-import random
 import time
 from collections.abc import Iterable, Sequence
 from dataclasses import asdict, dataclass, fields, replace
@@ -12,7 +11,7 @@ from typing import TextIO
 
 from minesweeper.core.config import GameConfig
 from minesweeper.core.game import Game, Status
-from minesweeper.solver import SOLVERS, Solver, apply_move
+from minesweeper.solver import SOLVERS, Solver, apply_move, solver_rng
 
 log = logging.getLogger(__name__)
 
@@ -42,7 +41,7 @@ def run_game(config: GameConfig, solver_cls: type[Solver]) -> GameRecord:
     if config.seed is None:
         raise ValueError("run_game needs config.seed for reproducibility")
     game = Game(config)
-    solver = solver_cls(random.Random(config.seed))
+    solver = solver_cls(solver_rng(config.seed))
     limit = config.rows * config.cols * 2
     moves = guesses = 0
     result = None

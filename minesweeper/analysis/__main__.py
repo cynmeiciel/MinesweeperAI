@@ -26,11 +26,18 @@ def main(argv: list[str] | None = None) -> int:
     except ValueError as exc:
         parser.error(str(exc))
 
+    out = None
+    if args.out:
+        try:  # open before running so a bad path fails fast, not after every game
+            out = open(args.out, "w", newline="", encoding="utf-8")
+        except OSError as exc:
+            parser.error(f"cannot write {args.out}: {exc.strerror}")
+
     base_seed = args.seed if args.seed is not None else 0
     records = run_batch(configs, args.solver, args.games, base_seed)
-    if args.out:
-        with open(args.out, "w", newline="", encoding="utf-8") as f:
-            write_csv(records, f)
+    if out is not None:
+        with out:
+            write_csv(records, out)
     print(format_summary(summarize(records)))
     return 0
 

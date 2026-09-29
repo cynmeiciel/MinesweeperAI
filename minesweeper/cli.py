@@ -86,4 +86,4 @@ def configs_from_args(args: argparse.Namespace) -> list[GameConfig]:
             configs.append(
                 GameConfig(rows, cols, args.mines if args.mines is not None else mines, **rules)
             )
-    return configs
+    return list(dict.fromkeys(configs))  # drop duplicates, keep order

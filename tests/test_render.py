@@ -12,7 +12,9 @@ from minesweeper.gui.render import (
     REVEALED_BG,
     WRONG_FLAG,
     cell_appearance,
+    cell_font_size,
     cell_size_for,
+    mouse_buttons,
     pixel_to_cell,
 )
 
@@ -81,3 +83,28 @@ def test_cell_size_clamped():
     assert cell_size_for(9, 9, 2000, 2000) == 40
     assert cell_size_for(100, 100, 1000, 1000) == 16
     assert cell_size_for(16, 30, 900, 800) == 30
+
+
+@pytest.mark.parametrize(
+    "system,version,expected",
+    [
+        ("x11", 8.6, ("<Button-3>", "<Button-2>")),
+        ("win32", 8.6, ("<Button-3>", "<Button-2>")),
+        ("aqua", 8.6, ("<Button-2>", "<Button-3>")),  # old Tk on macOS swaps 2/3
+        ("aqua", 8.7, ("<Button-3>", "<Button-2>")),  # Tk 8.7+ fixed it itself
+        ("aqua", 9.0, ("<Button-3>", "<Button-2>")),
+    ],
+)
+def test_mouse_buttons(system, version, expected):
+    assert mouse_buttons(system, version) == expected
+
+
+def test_cell_font_size_is_pixels_and_fits():
+    # negative = pixels in Tk, so DPI scaling cannot make text outgrow the cell
+    assert cell_font_size(40) == -20
+    assert cell_font_size(16) == -8
+
+
+def test_cell_size_scales_with_dpi():
+    assert cell_size_for(9, 9, 4000, 4000, scale=2.0) == 80
+    assert cell_size_for(100, 100, 1000, 1000, scale=2.0) == 32

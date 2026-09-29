@@ -14,7 +14,7 @@ from minesweeper.analysis.batch import (
     wilson_interval,
     write_csv,
 )
-from minesweeper.core.config import GameConfig
+from minesweeper.core.config import FirstClick, GameConfig
 from minesweeper.solver.base import Move
 from minesweeper.solver.random_solver import RandomSolver
 
@@ -126,3 +126,20 @@ def test_main_rejects_zero_games(capsys):
     with pytest.raises(SystemExit) as exc:
         main(["--games", "0"])
     assert exc.value.code == 2
+
+
+def test_solver_rng_independent_of_board_rng():
+    # Regression: seeding the solver like the board made its first random pick
+    # replay the first mine position (100% first-move loss under UNSAFE).
+    recs = run_batch(
+        [GameConfig(9, 9, 10, first_click=FirstClick.UNSAFE)], "random", games=300, base_seed=0
+    )
+    first_move_losses = sum(r.result == "lost" and r.moves == 1 for r in recs) / len(recs)
+    assert first_move_losses < 0.3  # expected ~10/81 = 12%
+
+
+def test_main_bad_out_path_fails_before_running(tmp_path, capsys):
+    with pytest.raises(SystemExit) as exc:
+        main(["--games", "1", "--out", str(tmp_path / "missing" / "r.csv")])
+    assert exc.value.code == 2
+    assert "cannot write" in capsys.readouterr().err

@@ -288,7 +288,7 @@ python -m minesweeper.analysis --solver random --preset beginner \
     [--density 0.10:0.25:0.03] [--out results.csv]
 ```
 
-- Game *i* uses seed `base_seed + i`; solver rng seeded with the same value.
+- Game *i* uses seed `base_seed + i`; the solver gets an independent but reproducible rng, `random.Random(f"solver:{seed}")` (`solver_rng`). Reusing the game seed directly would replay the board generator's draws and bias guesses onto mines.
 - `--preset` may be repeated; `--density start:stop:step` (stop inclusive,
   applied to rows/cols of each preset or `--rows/--cols`) sweeps densities.
   The run is the cartesian product of configs × games.

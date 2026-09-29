@@ -1,7 +1,6 @@
 """tkinter front-end. Thin: all rules live in core, all drawing decisions in render."""
 from __future__ import annotations
 
-import random
 import sys
 import tkinter as tk
 from dataclasses import replace
@@ -10,8 +9,15 @@ from tkinter import messagebox
 from minesweeper.core.board import Cell
 from minesweeper.core.config import PRESETS, FirstClick, FloodFill, GameConfig
 from minesweeper.core.game import CellState, Game, Status
-from minesweeper.gui.render import FACES, cell_appearance, cell_size_for, pixel_to_cell
-from minesweeper.solver import SOLVERS, Solver, apply_move
+from minesweeper.gui.render import (
+    FACES,
+    cell_appearance,
+    cell_font_size,
+    cell_size_for,
+    mouse_buttons,
+    pixel_to_cell,
+)
+from minesweeper.solver import SOLVERS, Solver, apply_move, solver_rng
 
 AI_HIGHLIGHT = "#ff8c00"
 GRID_LINE = "#808080"
@@ -101,9 +107,9 @@ class App:
         ).pack(fill="x", padx=8)
 
     def _bind_mouse(self) -> None:
-        # On macOS (aqua) right-click is Button-2 and middle-click is Button-3.
-        aqua = self.root.tk.call("tk", "windowingsystem") == "aqua"
-        flag_btn, chord_btn = ("<Button-2>", "<Button-3>") if aqua else ("<Button-3>", "<Button-2>")
+        system = self.root.tk.call("tk", "windowingsystem")
+        aqua = system == "aqua"
+        flag_btn, chord_btn = mouse_buttons(system, tk.TkVersion)
         self.canvas.bind("<Button-1>", self._on_left)
         self.canvas.bind(flag_btn, self._on_flag)
         self.canvas.bind(chord_btn, self._on_chord)
@@ -128,10 +134,11 @@ class App:
             rows, cols,
             int(self.root.winfo_screenwidth() * 0.85),
             int(self.root.winfo_screenheight() * 0.85) - 200,
+            scale=self.root.winfo_fpixels("1i") / 96,
         )
         self.canvas.delete("all")
         self.canvas.config(width=cols * s, height=rows * s)
-        font = ("TkDefaultFont", max(8, s // 2), "bold")
+        font = ("TkDefaultFont", cell_font_size(s), "bold")
         self._rects.clear()
         self._texts.clear()
         for r in range(rows):
@@ -234,7 +241,7 @@ class App:
         if self.game.is_over:
             return False
         if self.solver is None:
-            self.solver = SOLVERS[self.solver_var.get()](random.Random(self.game.seed))
+            self.solver = SOLVERS[self.solver_var.get()](solver_rng(self.game.seed))
         try:
             move = self.solver.next_move(self.game.view())
         except Exception as exc:  # show solver bugs instead of crashing the GUI

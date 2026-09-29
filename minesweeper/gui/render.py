@@ -58,5 +58,18 @@ def pixel_to_cell(x: float, y: float, cell_size: int, rows: int, cols: int) -> C
     return (r, c)
 
 
-def cell_size_for(rows: int, cols: int, max_w: int, max_h: int) -> int:
-    return max(16, min(40, max_w // cols, max_h // rows))
+def cell_size_for(rows: int, cols: int, max_w: int, max_h: int, scale: float = 1.0) -> int:
+    """Cell size in pixels; `scale` is the display's DPI factor (1.0 at 96 dpi)."""
+    return max(round(16 * scale), min(round(40 * scale), max_w // cols, max_h // rows))
+
+
+def cell_font_size(cell_size: int) -> int:
+    """Tk font size for cell text. Negative means pixels, so it tracks the cell, not DPI."""
+    return -(cell_size // 2)
+
+
+def mouse_buttons(windowing_system: str, tk_version: float) -> tuple[str, str]:
+    """(flag, chord) event names. Tk < 8.7 on macOS reports right-click as Button-2."""
+    if windowing_system == "aqua" and tk_version < 8.7:
+        return ("<Button-2>", "<Button-3>")
+    return ("<Button-3>", "<Button-2>")

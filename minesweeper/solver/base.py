@@ -25,6 +25,15 @@ class Solver(Protocol):
     def next_move(self, view: PlayerView) -> Move: ...
 
 
+def solver_rng(seed: int) -> random.Random:
+    """Reproducible RNG for a solver, independent of the board's RNG stream.
+
+    Seeding it with the game seed itself would replay the board generator's
+    draws, so a random guess would land exactly on the first mine placed.
+    """
+    return random.Random(f"solver:{seed}")
+
+
 def apply_move(game: Game, move: Move) -> bool:
     """Apply a solver move. Returns False (and changes nothing) if it is illegal."""
     r, c = move.cell

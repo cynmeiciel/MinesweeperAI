@@ -75,3 +75,10 @@ def test_preset_mines_override():
 def test_invalid_combinations(argv, msg):
     with pytest.raises(ValueError, match=msg):
         parse(argv)
+
+
+def test_duplicate_configs_removed():
+    # 0.10/0.11/0.12 on 5x5 round to 2, 3, 3 mines: the second 3 is a duplicate
+    cfgs = parse(["--preset", "tiny", "--density", "0.10:0.12:0.01"])
+    assert [c.mines for c in cfgs] == [2, 3]
+    assert len(parse(["--preset", "tiny", "--preset", "tiny"])) == 1
