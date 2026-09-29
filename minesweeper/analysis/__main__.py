@@ -1,0 +1,39 @@
+"""python -m minesweeper.analysis — run headless games and report statistics."""
+from __future__ import annotations
+
+import argparse
+import sys
+
+from minesweeper.analysis.batch import format_summary, run_batch, summarize, write_csv
+from minesweeper.cli import add_game_args, configs_from_args
+from minesweeper.solver import SOLVERS
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        prog="python -m minesweeper.analysis",
+        description="Run many headless games with a solver and summarise the results.",
+    )
+    add_game_args(parser, multi=True)
+    parser.add_argument("--solver", choices=list(SOLVERS), default="random")
+    parser.add_argument("--games", type=int, default=100, help="games per configuration")
+    parser.add_argument("--out", help="write per-game rows to this CSV file")
+    args = parser.parse_args(argv)
+    if args.games < 1:
+        parser.error("--games must be at least 1")
+    try:
+        configs = configs_from_args(args)
+    except ValueError as exc:
+        parser.error(str(exc))
+
+    base_seed = args.seed if args.seed is not None else 0
+    records = run_batch(configs, args.solver, args.games, base_seed)
+    if args.out:
+        with open(args.out, "w", newline="", encoding="utf-8") as f:
+            write_csv(records, f)
+    print(format_summary(summarize(records)))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
