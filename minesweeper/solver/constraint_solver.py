@@ -23,11 +23,14 @@ class ConstraintSolver:
     name = "lv2"
 
     def __init__(self, rng: random.Random) -> None:
+        self.last_level = 2
         self._lv1 = RuleBasedSolver(rng)
 
     def next_move(self, view: PlayerView) -> Move:
         try:
-            return self._lv1.next_move(view)
+            move = self._lv1.next_move(view)
+            self.last_level = self._lv1.last_level
+            return move
         except SolverStuck:
             pass
 
@@ -35,9 +38,11 @@ class ConstraintSolver:
         for constraint in constraints:
             if constraint.mines == 0:
                 cell = self._first_cell(constraint.cells)
+                self.last_level = 2
                 return self._move("SAFE", constraint, "reveal", cell)
             if constraint.mines == len(constraint.cells):
                 cell = self._first_cell(constraint.cells)
+                self.last_level = 2
                 return self._move("MINE", constraint, "flag", cell)
         raise SolverStuck("AI -> STUCK")
 

@@ -1,11 +1,12 @@
 import random
+from fractions import Fraction
 
 from minesweeper.core.board import Board
 from minesweeper.core.config import FirstClick, GameConfig
-from minesweeper.core.game import CellState, Game, Status
+from minesweeper.core.game import CellState, Game, PlayerView, Status
 import pytest
 
-from minesweeper.solver import ConstraintSolver, SOLVERS, RuleBasedSolver, SolverStuck
+from minesweeper.solver import ConstraintSolver, DfsSolver, SOLVERS, RuleBasedSolver, SolverStuck
 from minesweeper.solver.base import Move, apply_move
 from minesweeper.solver.random_solver import RandomSolver
 
@@ -22,6 +23,8 @@ def test_registry():
     assert RuleBasedSolver.name == "lv1"
     assert SOLVERS["lv2"] is ConstraintSolver
     assert ConstraintSolver.name == "lv2"
+    assert SOLVERS["lv3"] is DfsSolver
+    assert DfsSolver.name == "lv3"
 
 
 def test_constraint_solver_flags_mine_from_subset_difference():
@@ -58,8 +61,88 @@ def test_constraint_solver_opens_first_cell_instead_of_stuck():
     move = ConstraintSolver(random.Random(0)).next_move(strip_game().view())
 
     assert move.action == "reveal"
-    assert move.cell == (0, 0)
+    assert move.cell == (0, 2)
     assert move.certain
+
+
+def test_dfs_solver_uses_probability_when_no_certain_move_exists():
+    view = PlayerView(
+        rows=1,
+        cols=3,
+        total_mines=1,
+        cells=((None, 1, None),),
+        flags=frozenset(),
+        status=Status.PLAYING,
+    )
+
+    move = DfsSolver(random.Random(0)).next_move(view)
+
+    assert move.action == "reveal"
+    assert move.cell == (0, 0)
+    assert not move.certain
+    assert "P(MINE)=1/2" in move.reason
+    assert "MINES_LEFT=1" in move.reason
+
+
+def test_dfs_solver_checks_all_frontier_components_before_guessing():
+    move = DfsSolver._choose_move(
+        {(0, 0): Fraction(1, 2), (1, 0): Fraction(0)},
+        {(0, 0): 2, (1, 0): 1},
+    )
+
+    assert move.action == "reveal"
+    assert move.cell == (1, 0)
+    assert move.certain
+
+
+def test_dfs_solver_opens_lowest_mine_probability_when_no_certain_move_exists():
+    move = DfsSolver._choose_move(
+        {(0, 0): Fraction(2, 3), (0, 1): Fraction(1, 3)},
+        {(0, 0): 1, (0, 1): 1},
+        mines_left=1,
+    )
+
+    assert move.action == "reveal"
+    assert move.cell == (0, 1)
+    assert not move.certain
+    assert "P(MINE)=1/3" in move.reason
+
+
+def test_dfs_solver_finishes_when_no_frontier_remains():
+    view = PlayerView(
+        rows=1,
+        cols=4,
+        total_mines=2,
+        cells=((None, 2, None, None),),
+        flags=frozenset({(0, 0), (0, 2)}),
+        status=Status.PLAYING,
+    )
+
+    move = DfsSolver(random.Random(0)).next_move(view)
+
+    assert move.action == "reveal"
+    assert move.cell == (0, 3)
+    assert move.certain
+    assert "P(MINE)=0" in move.reason
+
+
+def test_dfs_solver_only_considers_frontier_cells():
+    view = PlayerView(
+        rows=1,
+        cols=5,
+        total_mines=1,
+        cells=((None, 1, None, None, None),),
+        flags=frozenset(),
+        status=Status.PLAYING,
+    )
+
+    move = DfsSolver(random.Random(0)).next_move(view)
+
+    assert move.action == "reveal"
+    assert move.cell == (0, 0)
+    assert not move.certain
+    assert "P(MINE)=1/2" in move.reason
+    assert "MINES_LEFT=1" in move.reason
 
 
 def test_rule_based_solver_flags_all_determined_mines():
@@ -104,8 +187,8 @@ def test_rule_based_solver_opens_first_cell_instead_of_stuck():
     move = RuleBasedSolver(random.Random(0)).next_move(strip_game().view())
 
     assert move.action == "reveal"
-    assert move.cell == (0, 0)
-    assert move.reason == "[Opening] REVEAL (0, 0)"
+    assert move.cell == (0, 2)
+    assert move.reason == "[Opening] REVEAL (0, 2)"
 
 
 def test_random_solver_only_picks_hidden_unflagged():

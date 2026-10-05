@@ -35,12 +35,18 @@ the reason is shown; the move must still be made by the player.
 python -m minesweeper.analysis --solver random --preset tiny --preset beginner \
     --games 1000 --seed 0 --out results.csv
 python -m minesweeper.analysis --solver lv2 --preset beginner --games 100
+python -m minesweeper.analysis --solver lv3 --preset beginner --games 100
+python -m minesweeper.analysis --solver lv3 --preset beginner --games 100 \
+  --out results.csv --log failures.log
 python -m minesweeper.analysis --preset beginner --density 0.10:0.25:0.03 --games 500
 ```
 
 Game *i* uses seed `--seed + i`, so runs are reproducible. Prints win rate
 (95% Wilson CI), mean moves, guesses and time per configuration; `--out`
 writes one CSV row per game.
+All games are written to `analysis.log` by default, or to the path passed with
+`--log`; the log includes the result, seed, remaining mines, and remaining safe
+cells.
 
 ## Platform notes
 

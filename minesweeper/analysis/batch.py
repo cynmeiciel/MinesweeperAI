@@ -31,6 +31,8 @@ class GameRecord:
     moves: int
     guesses: int
     cells_revealed: int
+    mines_remaining: int
+    cells_remaining: int
     time_ms: float
 
 
@@ -83,6 +85,8 @@ def run_game(config: GameConfig, solver_cls: type[Solver]) -> GameRecord:
         moves=moves,
         guesses=guesses,
         cells_revealed=game.revealed_count,
+        mines_remaining=game.mines_remaining,
+        cells_remaining=config.rows * config.cols - config.mines - game.revealed_count,
         time_ms=round(elapsed_ms, 3),
     )
 
@@ -103,6 +107,22 @@ def write_csv(records: Iterable[GameRecord], file: TextIO) -> None:
     writer.writeheader()
     for record in records:
         writer.writerow(asdict(record))
+
+
+def write_game_log(records: Iterable[GameRecord], file: TextIO) -> None:
+    """Write every game and its final board state for replay/debugging."""
+    file.write("seed,result,solver,mines_remaining,cells_remaining,moves,guesses\n")
+    for record in records:
+        file.write(
+            f"{record.seed},{record.result},{record.solver},"
+            f"{record.mines_remaining},{record.cells_remaining},"
+            f"{record.moves},{record.guesses}\n"
+        )
+
+
+def write_failure_log(records: Iterable[GameRecord], file: TextIO) -> None:
+    """Backward-compatible name for the complete game log writer."""
+    write_game_log(records, file)
 
 
 def wilson_interval(wins: int, n: int, z: float = 1.96) -> tuple[float, float]:

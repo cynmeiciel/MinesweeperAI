@@ -18,13 +18,21 @@ class RuleBasedSolver:
     name = "lv1"
 
     def __init__(self, rng: random.Random) -> None:
+        self.last_level = 1
         del rng  # The LV1 solver never guesses.
 
     def next_move(self, view: PlayerView) -> Move:
         if not self._open_cells(view):
             hidden = view.hidden_cells()
             if hidden:
-                cell = hidden[0]
+                cell = min(
+                    hidden,
+                    key=lambda candidate: (
+                        abs(2 * candidate[0] - (view.rows - 1))
+                        + abs(2 * candidate[1] - (view.cols - 1)),
+                        candidate,
+                    ),
+                )
                 reason = f"[Opening] REVEAL {cell}"
                 log.info(reason)
                 return Move("reveal", cell, reason, certain=True)
