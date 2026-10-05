@@ -17,7 +17,7 @@ from minesweeper.gui.render import (
     mouse_buttons,
     pixel_to_cell,
 )
-from minesweeper.solver import SOLVERS, Solver, apply_move, solver_rng
+from minesweeper.solver import SOLVERS, Solver, SolverStuck, apply_move, solver_rng
 
 AI_HIGHLIGHT = "#ff8c00"
 GRID_LINE = "#808080"
@@ -30,7 +30,6 @@ class App:
         self.game: Game
         self.solver: Solver | None = None
         self._ai_cell: Cell | None = None
-        self._auto_job: str | None = None
         self._timer_job: str | None = None
         self._rects: dict[Cell, int] = {}
         self._texts: dict[Cell, int] = {}
@@ -70,6 +69,10 @@ class App:
         menubar.add_cascade(label="Game", menu=game_menu)
         self.root.config(menu=menubar)
         self.root.bind("<F2>", lambda _e: self.new_game())
+        self.root.bind("<KeyPress-h>", lambda _e: self.ai_step())
+        self.root.bind("<KeyPress-H>", lambda _e: self.ai_step())
+        self.root.bind("<KeyPress-s>", lambda _e: self.ai_solve())
+        self.root.bind("<KeyPress-S>", lambda _e: self.ai_solve())
 
     def _build_header(self) -> None:
         header = tk.Frame(self.root)
@@ -92,18 +95,11 @@ class App:
         tk.OptionMenu(
             panel, self.solver_var, *SOLVERS, command=lambda _v: self._reset_solver()
         ).pack(side="left")
-        tk.Button(panel, text="Step", command=self.ai_step).pack(side="left", padx=2)
-        self.auto_btn = tk.Button(panel, text="Auto", width=6, command=self.toggle_auto)
-        self.auto_btn.pack(side="left", padx=2)
-        self.speed = tk.Scale(
-            panel, from_=50, to=1000, resolution=50, orient="horizontal",
-            label="ms / move", length=140,
-        )
-        self.speed.set(300)
-        self.speed.pack(side="left", padx=6)
+        tk.Button(panel, text="Hint", command=self.ai_step).pack(side="left", padx=2)
+        tk.Button(panel, text="Solve", command=self.ai_solve).pack(side="left", padx=2)
         self.reason_var = tk.StringVar()
-        tk.Label(
-            self.root, textvariable=self.reason_var, anchor="w", justify="left", wraplength=500
+        tk.Entry(
+            self.root, textvariable=self.reason_var, state="readonly", relief="flat"
         ).pack(fill="x", padx=8)
 
     def _bind_mouse(self) -> None:
@@ -121,7 +117,6 @@ class App:
     def new_game(self, config: GameConfig | None = None) -> None:
         if config is not None:
             self.config = config
-        self._stop_auto()
         if self._timer_job is not None:
             self.root.after_cancel(self._timer_job)
             self._timer_job = None
@@ -196,7 +191,6 @@ class App:
     def _after_move(self, cells) -> None:
         if self.game.is_over:
             self._redraw_all()
-            self._stop_auto()
         else:
             for cell in cells:
                 self._draw_cell(cell)
@@ -215,6 +209,7 @@ class App:
         cell = self._cell_at(event)
         if cell is None:
             return
+        self._ai_cell = None
         if self.game.state(*cell) is CellState.REVEALED:
             result = self.game.chord(*cell)
         else:
@@ -224,11 +219,13 @@ class App:
     def _on_flag(self, event: tk.Event) -> None:
         cell = self._cell_at(event)
         if cell is not None and self.game.toggle_flag(*cell):
+            self._ai_cell = None
             self._after_move([cell])
 
     def _on_chord(self, event: tk.Event) -> None:
         cell = self._cell_at(event)
         if cell is not None:
+            self._ai_cell = None
             self._after_move(self.game.chord(*cell).revealed)
 
     # --- AI ------------------------------------------------------------------------
@@ -236,49 +233,48 @@ class App:
     def _reset_solver(self) -> None:
         self.solver = None  # created lazily with the game's seed on the next step
 
-    def ai_step(self) -> bool:
-        """Ask the solver for one move and apply it. Returns True if a move was made."""
+    def _next_hint(self):
         if self.game.is_over:
-            return False
+            return None
         if self.solver is None:
             self.solver = SOLVERS[self.solver_var.get()](solver_rng(self.game.seed))
         try:
             move = self.solver.next_move(self.game.view())
+        except SolverStuck:
+            self._ai_cell = None
+            self.reason_var.set("AI -> STUCK")
+            self._redraw_all()
+            return None
         except Exception as exc:  # show solver bugs instead of crashing the GUI
             self.reason_var.set(f"solver error: {exc}")
-            self._stop_auto()
+            return None
+        return move
+
+    def _show_hint(self, move) -> None:
+        self._ai_cell = move.cell
+        prefix = "" if move.certain else "guess: "
+        self.reason_var.set(f"Hint: {move.action} {move.cell} — {prefix}{move.reason}")
+        self._redraw_all()
+
+    def ai_step(self) -> bool:
+        """Ask the solver for a hint without changing the game."""
+        move = self._next_hint()
+        if move is None:
+            return False
+        self._show_hint(move)
+        return True
+
+    def ai_solve(self) -> bool:
+        """Apply exactly one move suggested by the solver."""
+        move = self._next_hint()
+        if move is None:
             return False
         if not apply_move(self.game, move):
             self.reason_var.set(f"illegal move: {move.action} {move.cell}")
-            self._stop_auto()
             return False
-        self._ai_cell = move.cell
-        prefix = "" if move.certain else "guess: "
-        self.reason_var.set(f"{move.action} {move.cell} — {prefix}{move.reason}")
-        self._redraw_all()  # a move can reveal many cells; full redraw keeps it simple
+        self._show_hint(move)
         self._after_move([])
         return True
-
-    def toggle_auto(self) -> None:
-        if self._auto_job is not None:
-            self._stop_auto()
-        else:
-            self.auto_btn.config(text="Pause")
-            self._auto_tick()
-
-    def _auto_tick(self) -> None:
-        self._auto_job = None
-        if self.ai_step() and not self.game.is_over:
-            self._auto_job = self.root.after(self.speed.get(), self._auto_tick)
-        else:
-            self._stop_auto()
-
-    def _stop_auto(self) -> None:
-        if self._auto_job is not None:
-            self.root.after_cancel(self._auto_job)
-            self._auto_job = None
-        if hasattr(self, "auto_btn"):
-            self.auto_btn.config(text="Auto")
 
 
 class CustomDialog(tk.Toplevel):

@@ -11,7 +11,7 @@ from typing import TextIO
 
 from minesweeper.core.config import GameConfig
 from minesweeper.core.game import Game, Status
-from minesweeper.solver import SOLVERS, Solver, apply_move, solver_rng
+from minesweeper.solver import SOLVERS, Solver, SolverStuck, apply_move, solver_rng
 
 log = logging.getLogger(__name__)
 
@@ -53,6 +53,9 @@ def run_game(config: GameConfig, solver_cls: type[Solver]) -> GameRecord:
             break
         try:
             move = solver.next_move(game.view())
+        except SolverStuck:
+            result = "stalled"
+            break
         except Exception:
             log.warning("seed %s: %s raised", config.seed, solver_cls.name, exc_info=True)
             result = "stalled"

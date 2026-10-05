@@ -15,8 +15,8 @@ Left-click reveals, right-click flags (Ctrl+click on macOS), left-click on a
 number (or middle-click) chords. *Game ▸ Custom…* exposes every option. The status bar shows the seed
 so any board can be replayed with `--seed`.
 
-AI panel: pick a solver, **Step** makes one move (the cell is outlined and the
-reason shown), **Auto** keeps stepping at the chosen speed.
+AI panel: pick a solver and click **Hint**. The suggested cell is outlined and
+the reason is shown; the move must still be made by the player.
 
 ## Options
 
@@ -34,6 +34,7 @@ reason shown), **Auto** keeps stepping at the chosen speed.
 ```bash
 python -m minesweeper.analysis --solver random --preset tiny --preset beginner \
     --games 1000 --seed 0 --out results.csv
+python -m minesweeper.analysis --solver lv2 --preset beginner --games 100
 python -m minesweeper.analysis --preset beginner --density 0.10:0.25:0.03 --games 500
 ```
 
