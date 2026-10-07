@@ -9,6 +9,10 @@ from minesweeper.core.board import Cell
 from minesweeper.core.game import CellState, Game, PlayerView
 
 
+class SolverStuck(RuntimeError):
+    """Raised when a solver has no legal deterministic move to suggest."""
+
+
 @dataclass(frozen=True)
 class Move:
     action: Literal["reveal", "flag"]

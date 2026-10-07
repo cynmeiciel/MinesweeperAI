@@ -13,6 +13,7 @@ from minesweeper.analysis.batch import (
     summarize,
     wilson_interval,
     write_csv,
+    write_failure_log,
 )
 from minesweeper.core.config import FirstClick, GameConfig
 from minesweeper.solver.base import Move
@@ -93,6 +94,21 @@ def test_write_csv_header_and_rows():
     rows = list(csv.DictReader(io.StringIO(buf.getvalue())))
     assert list(rows[0]) == CSV_FIELDS
     assert len(rows) == 3
+
+
+def test_write_game_log_includes_seed_and_remaining_counts(tmp_path):
+    records = [
+        run_game(GameConfig(5, 5, 3, seed=0), StuckSolver),
+        run_game(GameConfig(5, 5, 3, seed=1), RandomSolver),
+    ]
+    path = tmp_path / "failures.log"
+    with path.open("w", encoding="utf-8") as file:
+        write_failure_log(records, file)
+
+    lines = path.read_text(encoding="utf-8").splitlines()
+    assert lines[0] == "seed,result,solver,mines_remaining,cells_remaining,moves,guesses"
+    assert lines[1].startswith("0,stalled,stuck,")
+    assert lines[2].startswith("1,lost,random,")
 
 
 def test_summarize_groups_by_config():

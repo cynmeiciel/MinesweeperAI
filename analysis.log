@@ -1,0 +1,6 @@
+seed,result,solver,mines_remaining,cells_remaining,moves,guesses
+0,lost,random,3,7,2,2
+1,lost,random,3,14,4,4
+2,lost,random,3,2,2,2
+3,lost,random,3,7,2,2
+4,lost,random,3,10,8,8
