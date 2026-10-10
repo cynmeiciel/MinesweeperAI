@@ -17,6 +17,7 @@ from minesweeper.analysis.batch import (
 )
 from minesweeper.core.config import FirstClick, GameConfig
 from minesweeper.solver.base import Move
+from minesweeper.solver.debug import Debug
 from minesweeper.solver.random_solver import RandomSolver
 
 
@@ -159,3 +160,22 @@ def test_main_bad_out_path_fails_before_running(tmp_path, capsys):
         main(["--games", "1", "--out", str(tmp_path / "missing" / "r.csv")])
     assert exc.value.code == 2
     assert "cannot write" in capsys.readouterr().err
+
+
+class NoisyDebugSolver(RandomSolver):
+    """Random solver that attaches invalid overlay data to every move."""
+
+    name = "noisy"
+
+    def next_move(self, view):
+        move = super().next_move(view)
+        return Move(
+            move.action, move.cell, move.reason, move.certain,
+            debug=Debug(probabilities={(99, 99): 5.0}, labels={move.cell: ""}),
+        )
+
+
+def test_batch_ignores_debug_even_when_invalid():
+    cfg = GameConfig(9, 9, 10, seed=11)
+    keep = lambda r: {k: v for k, v in r.__dict__.items() if k not in ("solver", "time_ms")}
+    assert keep(run_game(cfg, RandomSolver)) == keep(run_game(cfg, NoisyDebugSolver))

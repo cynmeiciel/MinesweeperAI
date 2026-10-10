@@ -7,6 +7,7 @@ from typing import ClassVar, Literal, Protocol
 
 from minesweeper.core.board import Cell
 from minesweeper.core.game import CellState, Game, PlayerView
+from minesweeper.solver.debug import Debug
 
 
 class SolverStuck(RuntimeError):
@@ -19,6 +20,7 @@ class Move:
     cell: Cell
     reason: str    # human-readable, shown in the GUI and useful for the report
     certain: bool  # False = a guess
+    debug: Debug | None = None  # optional overlay for the GUI; ignored by batch runs
 
 
 class Solver(Protocol):
