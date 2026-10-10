@@ -80,3 +80,9 @@ class HintRunner:
         except BaseException as exc:  # never let a solver kill the worker silently
             error = exc
         self._results.put(HintResult(job, move, error, time.perf_counter() - start))
+
+
+def describe_error(exc: BaseException) -> str:
+    """'ValueError: bad cell', or just 'AssertionError' when there is no message."""
+    message = str(exc)
+    return f"{type(exc).__name__}: {message}" if message else type(exc).__name__

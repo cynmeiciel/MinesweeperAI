@@ -3,7 +3,7 @@ import time
 
 import pytest
 
-from minesweeper.gui.hint_runner import HintRunner
+from minesweeper.gui.hint_runner import HintRunner, describe_error
 from minesweeper.solver.base import Move, SolverStuck
 
 MOVE = Move("reveal", (0, 0), "test", True)
@@ -141,3 +141,16 @@ def test_worker_is_daemon_thread():  # Review Focus 2
     worker = next(t for t in threading.enumerate() if t.name == f"hint-{job}")
     assert worker.daemon
     s.release.set()
+
+
+@pytest.mark.parametrize(
+    "exc,expected",
+    [
+        (AssertionError(), "AssertionError"),
+        (ValueError(), "ValueError"),
+        (ValueError("bad cell"), "ValueError: bad cell"),
+        (SolverStuck("AI -> STUCK"), "SolverStuck: AI -> STUCK"),
+    ],
+)
+def test_describe_error(exc, expected):
+    assert describe_error(exc) == expected

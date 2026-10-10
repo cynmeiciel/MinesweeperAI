@@ -3,13 +3,14 @@ from __future__ import annotations
 
 import sys
 import tkinter as tk
+import traceback
 from dataclasses import replace
 from tkinter import messagebox
 
 from minesweeper.core.board import Cell
 from minesweeper.core.config import PRESETS, FirstClick, FloodFill, GameConfig
 from minesweeper.core.game import CellState, Game, Status
-from minesweeper.gui.hint_runner import HintResult, HintRunner
+from minesweeper.gui.hint_runner import HintResult, HintRunner, describe_error
 from minesweeper.gui.overlay import (
     clip,
     group_notes,
@@ -398,6 +399,7 @@ class App:
         if self.runner.busy:
             self.runner.cancel()
             self.solver = None  # the abandoned thread may still be using this instance
+            self.reason_var.set("")  # don't leave a frozen "Thinking…" behind
         if self._poll_job is not None:
             self.root.after_cancel(self._poll_job)
             self._poll_job = None
@@ -426,7 +428,8 @@ class App:
             if isinstance(result.error, SolverStuck):
                 self.reason_var.set("AI -> STUCK")
             else:
-                self.reason_var.set(f"solver error: {result.error}")
+                self.reason_var.set(f"solver error: {describe_error(result.error)}")
+                traceback.print_exception(result.error)  # full trace for solver authors
             self._refresh_overlay()
             return
         move: Move = result.move
