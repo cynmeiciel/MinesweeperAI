@@ -36,15 +36,15 @@ def test_chord_refused_when_flag_count_differs():
     assert g.chord(1, 1).revealed == ()  # 0 flags, number is 1
 
 
-def test_chord_allows_more_flags_than_number():
+def test_chord_refused_with_more_flags_than_number():
     g = corner_game()
     g.reveal(1, 1)
     g.toggle_flag(0, 0)
-    g.toggle_flag(0, 1)
+    g.toggle_flag(0, 1)                 # 2 flags around a 1
     res = g.chord(1, 1)
-    assert res.hit_mine is None
-    assert g.state(0, 1) is CellState.FLAGGED
-    assert g.state(0, 2) is CellState.REVEALED
+    assert res.revealed == ()
+    assert g.state(0, 2) is CellState.HIDDEN
+    assert g.status is Status.PLAYING
 
 
 def test_chord_refused_on_hidden_cell():

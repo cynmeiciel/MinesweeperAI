@@ -171,7 +171,7 @@ class Game:
         around = neighbors(r, c, self.rows, self.cols)
         flagged = sum(self._state[nr][nc] is CellState.FLAGGED for nr, nc in around)
         hidden = [(nr, nc) for nr, nc in around if self._state[nr][nc] is CellState.HIDDEN]
-        if flagged < self._board.adjacent[r][c] or not hidden:
+        if flagged != self._board.adjacent[r][c] or not hidden:
             return self._nothing()
         result = self._open(hidden)
         self.stats.clicks += 1
