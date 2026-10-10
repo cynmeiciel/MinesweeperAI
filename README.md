@@ -15,8 +15,11 @@ Left-click reveals, right-click flags (Ctrl+click on macOS), left-click on a
 number (or middle-click) chords. *Game ▸ Custom…* exposes every option. The status bar shows the seed
 so any board can be replayed with `--seed`.
 
-AI panel: pick a solver and click **Hint**. The suggested cell is outlined and
-the reason is shown; the move must still be made by the player.
+AI panel: pick a solver and click **Hint** (`h`) to see its suggested move
+(outlined, with the reason), or **Solve** (`s`) to play exactly one move. The
+solver runs in the background: the window stays responsive, the line below
+shows `Thinking… 3.2 s`, and **Cancel** stops waiting (a manual move, new game
+or solver change cancels too).
 
 ## Options
 
@@ -47,6 +50,27 @@ writes one CSV row per game.
 All games are written to `analysis.log` by default, or to the path passed with
 `--log`; the log includes the result, seed, remaining mines, and remaining safe
 cells.
+
+## Solver overlay (debugging your AI)
+
+A solver can attach overlay data to any move; the GUI paints it on the board
+for Hint and Solve (batch runs ignore it). The GUI sets
+`solver.overlay_enabled = True`, so you can skip building it otherwise.
+
+```python
+from minesweeper.solver import Debug, Group, Move
+
+debug = Debug(
+    probabilities={(3, 4): 0.12, (3, 5): 0.5},          # 0 safe … 1 mine → green…red
+    labels={(2, 2): "safe", (5, 1): "mine", (4, 4): "frontier"},  # or any string
+    groups=(Group(((2, 3), (3, 3)), note="subset rule"),),
+)
+return Move("reveal", (3, 4), "lowest mine probability", certain=False,
+            debug=debug if getattr(self, "overlay_enabled", False) else None)
+```
+
+Toggle with **Show overlay** or the `O` key; hover a cell for its values.
+Invalid entries are skipped and the first problem is shown after the reason.
 
 ## Platform notes
 
