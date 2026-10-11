@@ -191,6 +191,27 @@ def test_rule_based_solver_opens_first_cell_instead_of_stuck():
     assert move.reason == "[Opening] REVEAL (0, 2)"
 
 
+def test_opening_strategy_corner():
+    move = RuleBasedSolver(random.Random(0), opening_strategy="corner").next_move(
+        strip_game().view()
+    )
+
+    assert move.cell == (0, 0)
+
+
+def test_opening_strategy_reaches_lv3():
+    move = DfsSolver(random.Random(0), opening_strategy="corner").next_move(
+        strip_game().view()
+    )
+
+    assert move.cell == (0, 0)
+
+
+def test_opening_strategy_rejects_unknown_value():
+    with pytest.raises(ValueError, match="opening_strategy"):
+        RuleBasedSolver(random.Random(0), opening_strategy="edge")
+
+
 def test_random_solver_only_picks_hidden_unflagged():
     g = strip_game()
     g.reveal(0, 4)

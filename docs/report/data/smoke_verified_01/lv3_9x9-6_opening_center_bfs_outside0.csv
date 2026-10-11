@@ -1,0 +1,6 @@
+seed,rows,cols,mines,density,first_click,chord,flood_fill,solver,result,moves,guesses,cells_revealed,mines_remaining,cells_remaining,time_ms,experiment_id,opening_strategy,include_outside
+0,9,9,6,0.0741,OPENING,True,BFS,lv3,won,8,0,75,0,0,2.878,lv3_9x9-6_opening_center_bfs_outside0,center,False
+1,9,9,6,0.0741,OPENING,True,BFS,lv3,won,14,0,75,0,0,2.062,lv3_9x9-6_opening_center_bfs_outside0,center,False
+2,9,9,6,0.0741,OPENING,True,BFS,lv3,won,13,0,75,0,0,1.25,lv3_9x9-6_opening_center_bfs_outside0,center,False
+3,9,9,6,0.0741,OPENING,True,BFS,lv3,won,5,0,75,4,0,0.547,lv3_9x9-6_opening_center_bfs_outside0,center,False
+4,9,9,6,0.0741,OPENING,True,BFS,lv3,won,25,0,75,0,0,3.15,lv3_9x9-6_opening_center_bfs_outside0,center,False

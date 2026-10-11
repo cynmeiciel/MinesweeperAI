@@ -22,9 +22,9 @@ class ConstraintSolver:
 
     name = "lv2"
 
-    def __init__(self, rng: random.Random) -> None:
+    def __init__(self, rng: random.Random, *, opening_strategy: str = "center") -> None:
         self.last_level = 2
-        self._lv1 = RuleBasedSolver(rng)
+        self._lv1 = RuleBasedSolver(rng, opening_strategy=opening_strategy)
 
     def next_move(self, view: PlayerView) -> Move:
         try:

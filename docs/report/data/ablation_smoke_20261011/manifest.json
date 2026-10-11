@@ -1,0 +1,131 @@
+{
+  "collect_stats": true,
+  "collection_games_completed": 10,
+  "command": [
+    "docs/report/scripts/run_ablation.py",
+    "--presets",
+    "beginner",
+    "--games",
+    "10",
+    "--out-dir",
+    "docs/report/data/ablation_smoke_20261011"
+  ],
+  "commands": [
+    [
+      "docs/report/scripts/run_ablation.py",
+      "--presets",
+      "beginner",
+      "--games",
+      "10",
+      "--out-dir",
+      "docs/report/data/ablation_smoke_20261011"
+    ]
+  ],
+  "configurations": [
+    {
+      "chord": true,
+      "cols": 9,
+      "config_id": "34bcd556ea7ef52c",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games": 10,
+      "include_outside": false,
+      "mines": 10,
+      "opening_strategy": "center",
+      "preset": "beginner",
+      "rows": 9
+    }
+  ],
+  "data_sha256": {
+    "ablation_frontiers.csv": "8c71982fb2c0ed68485a32320dad004f76b607661ce85b7a1698467445d3906e",
+    "ablation_games.csv": "331114391ad5a1043df54aeffcc28826a4de2e28c774e1bfda774433749bcb32",
+    "collection_games.csv": "e0432c85bacb9b0e749adef4392e8b31fdeb8fb0eeb1c60f66154cad705cabbd",
+    "frontiers.jsonl": "f000a33f40c73334e322db5e763cea11fa85cab5e975a6ca0821be6545d5a55c"
+  },
+  "ended_at": "2026-10-11T03:49:33.076896+00:00",
+  "environment": {
+    "cpu": null,
+    "os": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "python_executable": "/workspace/MinesweeperAI/.venv/bin/python"
+  },
+  "experiments": [],
+  "games_override": 10,
+  "git_commit": "4b7f67151bb21ddc09c4ffcd1bf0e39f8c54bcd4",
+  "git_status": "dirty",
+  "git_status_porcelain": "M docs/report/README.md\n M docs/report/REVIEW.md\n M docs/report/scripts/run_experiments.py\n M minesweeper/analysis/batch.py\n M minesweeper/solver/__init__.py\n M minesweeper/solver/dfs_solver.py\n?? docs/report/Spec_ablation_Minesweeper.md\n?? docs/report/scripts/ablation_common.py\n?? docs/report/scripts/run_ablation.py\n?? docs/report/scripts/summarize_ablation.py\n?? tests/test_ablation.py\n?? tests/test_ablation_pipeline.py",
+  "info_games_completed": 20,
+  "measured_repetitions": 5,
+  "phases": {
+    "collect": "complete",
+    "games": "complete",
+    "replay": "complete"
+  },
+  "pipeline": "ablation",
+  "schema_version": 1,
+  "seed_start": 0,
+  "shuffle_seed": 0,
+  "snapshot_occurrences": 1,
+  "snapshot_status": {
+    "e26767cb9453be9723985960b5a794dacce65e1023cef71c41ba6945177f11fa": "complete"
+  },
+  "snapshots_unique": 1,
+  "source_sha256": {
+    "docs/report/scripts/ablation_common.py": "e1942b55bf09585c8c455ac72b6af091e5e9908035a0ae6cbd94eb7718776009",
+    "docs/report/scripts/plot_results.py": "4ae821d250720a01a913221d4bfce0ed545c6694c9bdc493bd7002262d143a86",
+    "docs/report/scripts/run_ablation.py": "eb082a232a5520ae1edd866b7b6f2ae9f9bd9b7df54c086bc46115de7c9f4a10",
+    "docs/report/scripts/run_experiments.py": "89cd07b317f4eb5529917b3cc4f9c74988c1eb384e2f1b068adb7df121612950",
+    "docs/report/scripts/summarize_ablation.py": "4bfb25da262aa8d8ba997cb82120e8a1b5804ddd4aef42c433e05729038eba46",
+    "docs/report/scripts/summarize_results.py": "389007c35fdd0a51a6bda6c0757005b94cd09d4c57ed54019f906c9468848bbd",
+    "minesweeper/__init__.py": "bf47f68583be289f8e01ca58d5733bd4f6b23dbaa6fa9e83130700bbf70e786e",
+    "minesweeper/__main__.py": "24948ae09bc211c35c606ea428c75217c40c3785716aee37a7092937731046e9",
+    "minesweeper/analysis/__init__.py": "e9969d0d47a6b6c083a5a84bab80172162dceaa5d6106cc42bd5319d82529345",
+    "minesweeper/analysis/__main__.py": "cf9aba6226aaa8d092fc6d754432144edf9c9c96ba35aa69b80c6e7e807f5a5a",
+    "minesweeper/analysis/batch.py": "9659f99e30a561f352f596c6b3c29d257faebfbab8f4036ecc656682e2504858",
+    "minesweeper/cli.py": "b98f9179c2224c224c8cdb0da28aa23acf16fdfd3a8f1d37c0a20c2541f9bb11",
+    "minesweeper/core/__init__.py": "5a4734a9091560e777ade5d4fa63af9faa1f5ba92185fa69d96caa6aa67c5d75",
+    "minesweeper/core/board.py": "c43dbc654df7d7844ddc2bee4015fd5413dc9341a567dbe374f9ff4461b77d3f",
+    "minesweeper/core/config.py": "99e3be7ebc65dcae3d18a59dc25f21fd6780e254f3516d1e8f7db3a44f53d782",
+    "minesweeper/core/game.py": "8447c17c3d135d7669da1f28568b0b1d7807d35fe21820ea60e6f2830a11c043",
+    "minesweeper/gui/__init__.py": "0ed2d526721653a53c0f59ee653b7eeb6c8db18fe78ada93942d1a0476526605",
+    "minesweeper/gui/app.py": "69e2c67728b0bb9fba3de686230ca7ed5d9d827695aeb95f9d746c6a285b80f9",
+    "minesweeper/gui/hint_runner.py": "d798e04a7ee00cd001ccf3cade347bc456700866203f917a3d5e1271a86f9c88",
+    "minesweeper/gui/overlay.py": "a7ae793e097c987d348fa81b8a12d87143006132adad2cb174519abecbe4d83c",
+    "minesweeper/gui/render.py": "db13f354ec9c5b83f0c215b410239d33c2804d63da4ccfaccd102caf7dbf8ab2",
+    "minesweeper/solver/__init__.py": "82ab344e5a0f2666d51672b4b8f1a49f1331fb8af95f540dd5a5ad5551dd4ca1",
+    "minesweeper/solver/base.py": "6dc1543ca7df8a5ea226f655685b3947d8394991b6c4a5954b49ef4b28b0be34",
+    "minesweeper/solver/constraint_solver.py": "917d865ee0521e18afa001264c77f128032260b7ff873cc472ecf5f79956ca58",
+    "minesweeper/solver/debug.py": "209a490766a2c57676c94d560279d2c2ab284f35e55185967a58b9f2be1312a5",
+    "minesweeper/solver/dfs_solver.py": "052dc633150097f01d0dbdedc1392a28e574faaaa03ed15c1728b75c44f3f140",
+    "minesweeper/solver/random_solver.py": "a7a4daf1679e4deb5c2079d44b153329ac36ffea5cb55fabe62ae53c9dc83ced",
+    "minesweeper/solver/rule_based_solver.py": "3721f5504ff9a2b5c75c665c570d0e74ae3fd6bdd44b211d7cbe81d9e3343ea5"
+  },
+  "started_at": "2026-10-11T03:49:32.989125+00:00",
+  "status": "complete",
+  "timing": "sequential; perf_counter_ns; median of repetitions",
+  "variants": {
+    "baseline": {
+      "guess_tiebreak": "info",
+      "use_propagation": true,
+      "variable_order": "degree"
+    },
+    "no_degree": {
+      "guess_tiebreak": "info",
+      "use_propagation": true,
+      "variable_order": "coordinate"
+    },
+    "no_info": {
+      "guess_tiebreak": "coordinate",
+      "use_propagation": true,
+      "variable_order": "degree"
+    },
+    "no_propagation": {
+      "guess_tiebreak": "info",
+      "use_propagation": false,
+      "variable_order": "degree"
+    }
+  },
+  "warmup_repetitions": 1,
+  "weighting": "unique snapshots; occurrences recorded, not used as weights",
+  "working_tree_patch": "working_tree.patch"
+}

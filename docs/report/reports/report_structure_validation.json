@@ -1,0 +1,11 @@
+{
+  "docx_structure_valid": true,
+  "main_table_matches_csv": true,
+  "unsafe_row_added": true,
+  "unchanged_algorithm_tables": true,
+  "three_original_illustrations_preserved": true,
+  "two_experiment_figures_match_generated_png": true,
+  "coverage_table_added": true,
+  "word_toc_field_present": true,
+  "pagination_rendered": false
+}

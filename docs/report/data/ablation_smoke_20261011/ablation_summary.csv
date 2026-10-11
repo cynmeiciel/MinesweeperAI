@@ -1,0 +1,7 @@
+section,config_id,preset,variant,games,wins,losses,stalled,win_rate,ci_low,ci_high,mean_moves,mean_guesses,mean_time_ms,b,c,mcnemar_exact_p,win_difference_pp,snapshots,infeasible_snapshots,excluded_snapshots,matched_snapshots,mean_nodes,median_nodes,p95_nodes,mean_pruned_nodes,mean_forced_assignments,median_dfs_time_ms,p95_dfs_time_ms,total_node_ratio,total_dfs_time_ratio
+replay,,,baseline,,,,,,,,,,,,,,,1,0,0,1,3,3,3,0,2,0.007101,0.007101,1.0,1.0
+replay,,,no_degree,,,,,,,,,,,,,,,1,0,0,1,3,3,3,0,2,0.005237,0.005237,1.0,0.7375017603154486
+replay,,,no_propagation,,,,,,,,,,,,,,,1,0,0,1,7,7,7,2,0,0.012729,0.012729,2.3333333333333335,1.7925644275454162
+info,34bcd556ea7ef52c,beginner,baseline,10,10,0,0,1.0,0.7224598312333834,1.0,25.9,0.1,2.1806,,,,,,,,,,,,,,,,,
+info,34bcd556ea7ef52c,beginner,no_info,10,10,0,0,1.0,0.7224598312333834,1.0,25.9,0.1,2.1563,,,,,,,,,,,,,,,,,
+info_pair,34bcd556ea7ef52c,beginner,,10,,,,,,,,,,0,0,1.0,0.0,,,,,,,,,,,,,

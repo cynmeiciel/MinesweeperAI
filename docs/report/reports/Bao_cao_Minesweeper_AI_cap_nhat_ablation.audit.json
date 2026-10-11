@@ -1,0 +1,40 @@
+{
+  "command": [
+    "docs/report/scripts/update_ablation_report.py",
+    "--template",
+    "docs/report/reports/Bao_cao_Minesweeper_AI_cap_nhat_thuc_nghiem.docx",
+    "--data-dir",
+    "docs/report/data/ablation_full_20261011",
+    "--out",
+    "docs/report/reports/Bao_cao_Minesweeper_AI_cap_nhat_ablation.docx"
+  ],
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "python-docx": "1.2.0",
+    "matplotlib": "3.10.8"
+  },
+  "template_sha256": "96f6eac751211be07634426886dae69ea48d8fd745338d18ec059199999ed199",
+  "report_sha256": "f352770472beb44fd5e62ee519f595cf8a77ae010c65fd8c0821d7446c276d47",
+  "manifest_sha256": "87f0310003da92c2d51e63aef8b0a0af4ba03188875f8a12f3c4503a2d52e2ce",
+  "summary_sha256": "25e3ecef678dffd4c3e78464973d976767da290f39d11d1179526e108519b626",
+  "script_sha256": "caf14cc127114d77beb392e26cfe4369d149b13c535b7868fa2185438946c57f",
+  "figure_sha256": {
+    "ablation_info.png": "25d189ee6884db04126e85713981887318908fcaf65350b8f080211283b8b777",
+    "ablation_info.svg": "71cb416ab9483dd96001110dff6fc913214f6ef36457d48c278c9a2a0303ba1c",
+    "ablation_search.png": "0ee834fb893e760858c944fc15e25fa235a0b878eb0636ad268a5289f066e435",
+    "ablation_search.svg": "30f48f3b5ca279b6ccb2e25775efc22913d7990e734fe22a5a71f68ad7f654a6"
+  },
+  "main_tables_preserved": true,
+  "original_images_preserved": true,
+  "docx_zip_valid": true,
+  "new_figures_match_png": true,
+  "word_toc_field_preserved": true,
+  "exact_replay_verified": true,
+  "paired_board_fingerprints_verified": true,
+  "excluded_snapshots": 0,
+  "snapshots": 2524,
+  "new_tables": 3,
+  "new_figures": 2,
+  "pagination_rendered": false,
+  "updated_paragraphs": 7
+}

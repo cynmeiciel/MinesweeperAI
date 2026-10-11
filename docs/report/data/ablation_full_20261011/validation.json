@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "all_phases_complete": true,
+  "collection_games": 2300,
+  "paired_games": 4600,
+  "pairs": 2300,
+  "unique_snapshots": 2524,
+  "occurrences": 2526,
+  "exact_replay_matched": true,
+  "infeasible_snapshots": 0,
+  "excluded_snapshots": 0,
+  "source_and_raw_checksums_valid": true,
+  "initial_boards_match": true,
+  "execution_errors": 0,
+  "pytest_passed": 253,
+  "gui_tests_skipped": 3,
+  "pytest_note": "GUI skips require a display; no Word pagination rendered"
+}

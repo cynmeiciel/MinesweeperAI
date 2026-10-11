@@ -1,0 +1,1147 @@
+{
+  "command": [
+    "docs/report/scripts/run_experiments.py",
+    "--suite",
+    "all",
+    "--out-dir",
+    "docs/report/data/full_20261011"
+  ],
+  "csv_sha256": {
+    "lv1_16x16-40_opening_center_bfs_outside0": "c8513d4dffca008648c66c84192c9ad0ead3ce8bb327a8fe29168c91abaebff4",
+    "lv1_16x30-99_opening_center_bfs_outside0": "7a0e00a45cc86fbc8488aa2803f9af5e031dd7f13adeb0438e12a58e1e002b75",
+    "lv1_5x5-3_opening_center_bfs_outside0": "25b65e705f1437ab51d0328126ab628e5086a314e725e1670c33b6c8f296330a",
+    "lv1_9x9-10_opening_center_bfs_outside0": "ed0a53272bf9e2c1e8728290ea1a0b13dc3db35554c00a1cd15235169ccff440",
+    "lv2_16x16-40_opening_center_bfs_outside0": "912dcdc9c981f0a642dc61935d8f0e880fecc4a8a732f7da2d1ca7423814f142",
+    "lv2_16x30-99_opening_center_bfs_outside0": "cf02b6c5e9e9c2a3e4edce72879b8ae151180c077fd75ea11535bbec1d737a10",
+    "lv2_5x5-3_opening_center_bfs_outside0": "72c1cd22bb37c5e97e61fef6390f607df9ded0dd3ac9ce4fd38097fb38157c2c",
+    "lv2_9x9-10_opening_center_bfs_outside0": "469b84491cdf938ec3bd6a333129c0c2f04d92bc508c25eaf88d032c8e518ca0",
+    "lv3_16x16-40_opening_center_bfs_outside0": "03aee15b273cd2b0e09eb26997c53d95110578436a25ac36a3aea251d5d3346a",
+    "lv3_16x16-40_opening_center_bfs_outside1": "097fb8cbc989c5030b41e7b07e494dc6b9fccd1d3c53ddf1d9c22e4c7dcd8ff3",
+    "lv3_16x30-99_opening_center_bfs_outside0": "ab2d853b19e3a04d9286b746efb4e04d705a6c33d4a0d4dddbcd4009e263208c",
+    "lv3_16x30-99_opening_center_bfs_outside1": "db973b24c8f71c75fc25fdc7565fc97ceed9edb87d402c84d8c3a5ca2043b1fa",
+    "lv3_5x5-3_opening_center_bfs_outside0": "d85e62d7a4c371f72c8efb04c3871bd8ed947f13df639e78349a0907b9b2cf14",
+    "lv3_9x9-10_opening_center_bfs_outside0": "530153622c9ba1802339d83435dc36724f7de4c488054790f2654dfdb307b9dc",
+    "lv3_9x9-10_opening_center_bfs_outside1": "82b1fd51fd293c7d5ed3b5320deff111eab8700ea6f5261809c85fa078a5c962",
+    "lv3_9x9-10_opening_center_dfs_outside0": "528b6dc71fea21ab2064db79fdf8046b9cdbed8d409c5eb1e80738bd96ab156b",
+    "lv3_9x9-10_opening_corner_bfs_outside0": "a43a37b32d47131593c69749678d7e2cec0fdd97508256cbdb2c728ef39fe122",
+    "lv3_9x9-10_safe_center_bfs_outside0": "127f5a1d3cd964b5bc7b09d3a90dbcab18d5b41719e72e5371e17d18de5d1142",
+    "lv3_9x9-10_safe_corner_bfs_outside0": "4fc72c25349d4d6cb2227644336c370a3475189109985adbeb5f03c5ac8c007e",
+    "lv3_9x9-10_unsafe_center_bfs_outside0": "6dc664c610c2e3a387e04dfff22a32cf4eb12e8ca850a59d0a9e5ff1b75e5193",
+    "lv3_9x9-11_opening_center_bfs_outside0": "02fbab9b37703956d946fd1721fbc77c776bbcd58bdf9482594f0f63e2d88981",
+    "lv3_9x9-12_opening_center_bfs_outside0": "20fa9b349bd02a548df341ca9ba26a2b8efd182b41b3ba9a39d913ec31fad6e9",
+    "lv3_9x9-13_opening_center_bfs_outside0": "76dd50ec080c153e273c0372e488b1189513c11efb0d9816456e774df2176567",
+    "lv3_9x9-14_opening_center_bfs_outside0": "42236997e1f51e4cdf86535053d794cb13d411629b72e960eb8f1cae8662a1e5",
+    "lv3_9x9-15_opening_center_bfs_outside0": "3ae9c3a2b85a05f556a7b2836335bef26c97a1101771afa1c13c9f161fdbd87f",
+    "lv3_9x9-16_opening_center_bfs_outside0": "483b85f1546c271dd5c0b32af2a36412ee5c447f46f2ff42ddef815a15d61d61",
+    "lv3_9x9-17_opening_center_bfs_outside0": "951562610c8c4918b431ed84e08cf0d4ddd9a72bbd2fa768993e25517258ec0f",
+    "lv3_9x9-18_opening_center_bfs_outside0": "4ef3e3505fc241f760ff82ad051f870772a2927d85eff5d524acf524164ac31e",
+    "lv3_9x9-19_opening_center_bfs_outside0": "b69fd6ebdadfd695092a3f6daa786779e71fdd71f470b18b84e8d6e624c08e2a",
+    "lv3_9x9-20_opening_center_bfs_outside0": "c7a5af4db469b085eaaf659351194e92cbf2119881cb009ec562def51a4e6767",
+    "lv3_9x9-21_opening_center_bfs_outside0": "82b6f69a8845e44d83e1439d10d1690b613280f1fd6ff37133867f8953cce126",
+    "lv3_9x9-22_opening_center_bfs_outside0": "6812d3cb8cfcd6f08e9d3476ad3af6c7e6d3d74a96db4c3ae7be26150d9b63c3",
+    "lv3_9x9-23_opening_center_bfs_outside0": "3ce7e66517648de156bf1ff7799a280001004b09282f59a7e7a65bafe2386c23",
+    "lv3_9x9-24_opening_center_bfs_outside0": "966c5e2457101d998f7c89d7da64a86b207e66d3aac18b2e2fc2bbc5a394d6b6",
+    "lv3_9x9-5_opening_center_bfs_outside0": "9b5a98baf4e1b3cbd29166f08555316d6e43adbf1df527a49a88d78cdd4a421f",
+    "lv3_9x9-6_opening_center_bfs_outside0": "60eba754615871dda0eca216cfab0cf9b65c5aa01d969c0993acf5b8467b464d",
+    "lv3_9x9-7_opening_center_bfs_outside0": "c88db130ec4b1c7da8253fd0d69bd5d4c29e1bdfcae167871504e9ec56bc1f79",
+    "lv3_9x9-8_opening_center_bfs_outside0": "06f20c888ad2293f6d8e6dd6b03cf9b11dd5172346776c2a02d9ab2c74c66d88",
+    "lv3_9x9-9_opening_center_bfs_outside0": "b9e79210db819a1270d0d516308de51e9dece8e8919bdb0980f641405907d8be",
+    "random_16x16-40_opening_random_bfs_outside0": "b16ef756c56231b5102d3fd7612d9b02dc12f1a710d50c731d4755a6bafa54e0",
+    "random_16x30-99_opening_random_bfs_outside0": "833a2934495c258659a28c35db9e708d8c8d4d86538882a3a62829caaa6fc513",
+    "random_5x5-3_opening_random_bfs_outside0": "4884a013949c3f359475ec1243ca55b29194ad2e7f5af352bb33702255aa6daa",
+    "random_9x9-10_opening_random_bfs_outside0": "5f0c95d70ef33fa42503d0be9155349ff34e7778d637b215d1e3e621f5d742a6"
+  },
+  "ended_at": "2026-10-11T03:11:51.458486+00:00",
+  "environment": {
+    "cpu": null,
+    "os": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "python_executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python"
+  },
+  "experiments": [
+    {
+      "chord": true,
+      "cols": 5,
+      "csv_path": "random_5x5-3_opening_random_bfs_outside0.csv",
+      "experiment_id": "random_5x5-3_opening_random_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "main": 1000
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 3,
+      "opening_strategy": "random",
+      "rows": 5,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "random",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "random_9x9-10_opening_random_bfs_outside0.csv",
+      "experiment_id": "random_9x9-10_opening_random_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "main": 1000
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 10,
+      "opening_strategy": "random",
+      "rows": 9,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "random",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 16,
+      "csv_path": "random_16x16-40_opening_random_bfs_outside0.csv",
+      "experiment_id": "random_16x16-40_opening_random_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "main": 1000
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 40,
+      "opening_strategy": "random",
+      "rows": 16,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "random",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 30,
+      "csv_path": "random_16x30-99_opening_random_bfs_outside0.csv",
+      "experiment_id": "random_16x30-99_opening_random_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 300,
+      "games_expected": 300,
+      "group_games": {
+        "main": 300
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 99,
+      "opening_strategy": "random",
+      "rows": 16,
+      "seed_end": 299,
+      "seed_start": 0,
+      "solver": "random",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 5,
+      "csv_path": "lv1_5x5-3_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv1_5x5-3_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "main": 1000
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 3,
+      "opening_strategy": "center",
+      "rows": 5,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv1",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv1_9x9-10_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv1_9x9-10_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "main": 1000
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 10,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv1",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 16,
+      "csv_path": "lv1_16x16-40_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv1_16x16-40_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "main": 1000
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 40,
+      "opening_strategy": "center",
+      "rows": 16,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv1",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 30,
+      "csv_path": "lv1_16x30-99_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv1_16x30-99_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 300,
+      "games_expected": 300,
+      "group_games": {
+        "main": 300
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 99,
+      "opening_strategy": "center",
+      "rows": 16,
+      "seed_end": 299,
+      "seed_start": 0,
+      "solver": "lv1",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 5,
+      "csv_path": "lv2_5x5-3_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv2_5x5-3_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "main": 1000
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 3,
+      "opening_strategy": "center",
+      "rows": 5,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv2",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv2_9x9-10_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv2_9x9-10_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "main": 1000
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 10,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv2",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 16,
+      "csv_path": "lv2_16x16-40_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv2_16x16-40_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "main": 1000
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 40,
+      "opening_strategy": "center",
+      "rows": 16,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv2",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 30,
+      "csv_path": "lv2_16x30-99_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv2_16x30-99_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 300,
+      "games_expected": 300,
+      "group_games": {
+        "main": 300
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 99,
+      "opening_strategy": "center",
+      "rows": 16,
+      "seed_end": 299,
+      "seed_start": 0,
+      "solver": "lv2",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 5,
+      "csv_path": "lv3_5x5-3_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_5x5-3_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "main": 1000
+      },
+      "groups": [
+        "main"
+      ],
+      "include_outside": false,
+      "mines": 3,
+      "opening_strategy": "center",
+      "rows": 5,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-10_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-10_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "corner": 1000,
+        "density": 500,
+        "first-click": 1000,
+        "flood-fill": 1000,
+        "main": 1000,
+        "outside": 1000
+      },
+      "groups": [
+        "main",
+        "first-click",
+        "density",
+        "flood-fill",
+        "corner",
+        "outside"
+      ],
+      "include_outside": false,
+      "mines": 10,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 16,
+      "csv_path": "lv3_16x16-40_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_16x16-40_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "main": 1000,
+        "outside": 1000
+      },
+      "groups": [
+        "main",
+        "outside"
+      ],
+      "include_outside": false,
+      "mines": 40,
+      "opening_strategy": "center",
+      "rows": 16,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 30,
+      "csv_path": "lv3_16x30-99_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_16x30-99_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 300,
+      "games_expected": 300,
+      "group_games": {
+        "main": 300,
+        "outside": 300
+      },
+      "groups": [
+        "main",
+        "outside"
+      ],
+      "include_outside": false,
+      "mines": 99,
+      "opening_strategy": "center",
+      "rows": 16,
+      "seed_end": 299,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-10_unsafe_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-10_unsafe_center_bfs_outside0",
+      "first_click": "UNSAFE",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "first-click": 1000
+      },
+      "groups": [
+        "first-click"
+      ],
+      "include_outside": false,
+      "mines": 10,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-10_safe_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-10_safe_center_bfs_outside0",
+      "first_click": "SAFE",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "corner": 1000,
+        "first-click": 1000
+      },
+      "groups": [
+        "first-click",
+        "corner"
+      ],
+      "include_outside": false,
+      "mines": 10,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-5_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-5_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 5,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-6_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-6_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 6,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-7_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-7_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 7,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-8_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-8_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 8,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-9_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-9_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 9,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-11_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-11_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 11,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-12_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-12_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 12,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-13_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-13_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 13,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-14_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-14_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 14,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-15_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-15_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 15,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-16_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-16_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 16,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-17_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-17_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 17,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-18_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-18_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 18,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-19_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-19_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 19,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-20_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-20_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 20,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-21_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-21_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 21,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-22_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-22_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 22,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-23_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-23_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 23,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-24_opening_center_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-24_opening_center_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 500,
+      "games_expected": 500,
+      "group_games": {
+        "density": 500
+      },
+      "groups": [
+        "density"
+      ],
+      "include_outside": false,
+      "mines": 24,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 499,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-10_opening_center_dfs_outside0.csv",
+      "experiment_id": "lv3_9x9-10_opening_center_dfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "DFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "flood-fill": 1000
+      },
+      "groups": [
+        "flood-fill"
+      ],
+      "include_outside": false,
+      "mines": 10,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-10_safe_corner_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-10_safe_corner_bfs_outside0",
+      "first_click": "SAFE",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "corner": 1000
+      },
+      "groups": [
+        "corner"
+      ],
+      "include_outside": false,
+      "mines": 10,
+      "opening_strategy": "corner",
+      "rows": 9,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-10_opening_corner_bfs_outside0.csv",
+      "experiment_id": "lv3_9x9-10_opening_corner_bfs_outside0",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "corner": 1000
+      },
+      "groups": [
+        "corner"
+      ],
+      "include_outside": false,
+      "mines": 10,
+      "opening_strategy": "corner",
+      "rows": 9,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 9,
+      "csv_path": "lv3_9x9-10_opening_center_bfs_outside1.csv",
+      "experiment_id": "lv3_9x9-10_opening_center_bfs_outside1",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "outside": 1000
+      },
+      "groups": [
+        "outside"
+      ],
+      "include_outside": true,
+      "mines": 10,
+      "opening_strategy": "center",
+      "rows": 9,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 16,
+      "csv_path": "lv3_16x16-40_opening_center_bfs_outside1.csv",
+      "experiment_id": "lv3_16x16-40_opening_center_bfs_outside1",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 1000,
+      "games_expected": 1000,
+      "group_games": {
+        "outside": 1000
+      },
+      "groups": [
+        "outside"
+      ],
+      "include_outside": true,
+      "mines": 40,
+      "opening_strategy": "center",
+      "rows": 16,
+      "seed_end": 999,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    },
+    {
+      "chord": true,
+      "cols": 30,
+      "csv_path": "lv3_16x30-99_opening_center_bfs_outside1.csv",
+      "experiment_id": "lv3_16x30-99_opening_center_bfs_outside1",
+      "first_click": "OPENING",
+      "flood_fill": "BFS",
+      "games_completed": 300,
+      "games_expected": 300,
+      "group_games": {
+        "outside": 300
+      },
+      "groups": [
+        "outside"
+      ],
+      "include_outside": true,
+      "mines": 99,
+      "opening_strategy": "center",
+      "rows": 16,
+      "seed_end": 299,
+      "seed_start": 0,
+      "solver": "lv3",
+      "status": "complete"
+    }
+  ],
+  "games_override": null,
+  "git_commit": "0c1622a64d7b43f094e33c91e0decaae778498e3",
+  "git_status": "dirty",
+  "git_status_porcelain": "M docs/report/scripts/plot_results.py\n M docs/report/scripts/run_experiments.py\n M docs/report/scripts/summarize_results.py\n M uv.lock\n?? docs/report/data/\n?? tests/test_report_scripts.py",
+  "schema_version": 2,
+  "seed_start": 0,
+  "source_sha256": {
+    "docs/report/scripts/plot_results.py": "3f282e9125f8bcd7f1261bc1f666316157ca8148c49854cacc8c086e8c9bd676",
+    "docs/report/scripts/run_experiments.py": "7cbe628cf4caa11af37a15b040d5634d065729f32a63e10100f5fb0ac4a89f05",
+    "docs/report/scripts/summarize_results.py": "389007c35fdd0a51a6bda6c0757005b94cd09d4c57ed54019f906c9468848bbd",
+    "minesweeper/__init__.py": "bf47f68583be289f8e01ca58d5733bd4f6b23dbaa6fa9e83130700bbf70e786e",
+    "minesweeper/__main__.py": "24948ae09bc211c35c606ea428c75217c40c3785716aee37a7092937731046e9",
+    "minesweeper/analysis/__init__.py": "e9969d0d47a6b6c083a5a84bab80172162dceaa5d6106cc42bd5319d82529345",
+    "minesweeper/analysis/__main__.py": "cf9aba6226aaa8d092fc6d754432144edf9c9c96ba35aa69b80c6e7e807f5a5a",
+    "minesweeper/analysis/batch.py": "7c9d65704bab53df56e7ccf2cbd91cca4e1f386f62e2c41aa5f06ed57b35009d",
+    "minesweeper/cli.py": "b98f9179c2224c224c8cdb0da28aa23acf16fdfd3a8f1d37c0a20c2541f9bb11",
+    "minesweeper/core/__init__.py": "5a4734a9091560e777ade5d4fa63af9faa1f5ba92185fa69d96caa6aa67c5d75",
+    "minesweeper/core/board.py": "c43dbc654df7d7844ddc2bee4015fd5413dc9341a567dbe374f9ff4461b77d3f",
+    "minesweeper/core/config.py": "99e3be7ebc65dcae3d18a59dc25f21fd6780e254f3516d1e8f7db3a44f53d782",
+    "minesweeper/core/game.py": "8447c17c3d135d7669da1f28568b0b1d7807d35fe21820ea60e6f2830a11c043",
+    "minesweeper/gui/__init__.py": "0ed2d526721653a53c0f59ee653b7eeb6c8db18fe78ada93942d1a0476526605",
+    "minesweeper/gui/app.py": "69e2c67728b0bb9fba3de686230ca7ed5d9d827695aeb95f9d746c6a285b80f9",
+    "minesweeper/gui/hint_runner.py": "d798e04a7ee00cd001ccf3cade347bc456700866203f917a3d5e1271a86f9c88",
+    "minesweeper/gui/overlay.py": "a7ae793e097c987d348fa81b8a12d87143006132adad2cb174519abecbe4d83c",
+    "minesweeper/gui/render.py": "db13f354ec9c5b83f0c215b410239d33c2804d63da4ccfaccd102caf7dbf8ab2",
+    "minesweeper/solver/__init__.py": "fcf249dd857f13261f13ed18738fa1c06d440ee9083ec3656737521651c40fc8",
+    "minesweeper/solver/base.py": "6dc1543ca7df8a5ea226f655685b3947d8394991b6c4a5954b49ef4b28b0be34",
+    "minesweeper/solver/constraint_solver.py": "917d865ee0521e18afa001264c77f128032260b7ff873cc472ecf5f79956ca58",
+    "minesweeper/solver/debug.py": "209a490766a2c57676c94d560279d2c2ab284f35e55185967a58b9f2be1312a5",
+    "minesweeper/solver/dfs_solver.py": "81424b0e123c89a28c0311c69e6e5e310d5aa7c08cd367e8062be47a3100a7be",
+    "minesweeper/solver/random_solver.py": "a7a4daf1679e4deb5c2079d44b153329ac36ffea5cb55fabe62ae53c9dc83ced",
+    "minesweeper/solver/rule_based_solver.py": "3721f5504ff9a2b5c75c665c570d0e74ae3fd6bdd44b211d7cbe81d9e3343ea5"
+  },
+  "started_at": "2026-10-11T03:00:41.751451+00:00",
+  "suite": "all",
+  "working_tree_patch": "working_tree.patch"
+}

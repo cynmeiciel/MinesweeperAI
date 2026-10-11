@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-10-11T03:13:39.825310+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "matplotlib": "3.11.2",
+  "raw_manifest_sha256": "3cff724433c31892c168bdd301b0c50a66e4cf1aee002e873b524359b6ec79be",
+  "script_sha256": {
+    "docs/report/scripts/summarize_results.py": "389007c35fdd0a51a6bda6c0757005b94cd09d4c57ed54019f906c9468848bbd",
+    "docs/report/scripts/plot_results.py": "4ae821d250720a01a913221d4bfce0ed545c6694c9bdc493bd7002262d143a86"
+  },
+  "artifact_sha256": {
+    "summary.csv": "1e5ee2df1d091b91e1e1e65f7f32f2babbee9387c829af24fc479b3c750f2596",
+    "group_summary.csv": "810b691a855c727463077035694d2f5a85bc7e2302ce760b7f6870e01e8affbd",
+    "tables.md": "3c29772b61384fcacd016a65fce453f3dba5f4163c042a43c5e59392fba1c6cf",
+    "figures/win_rate_by_density.png": "deea0849d7e07f09510ad22184253f7a85d1f00498a8a600fe7ed6f4d82df709",
+    "figures/win_rate_by_density.svg": "dd024552f196048af7f7be84c1f45d1d0d59b7c37dcc1c67b40762f7314b97b0",
+    "figures/win_rate_by_solver.png": "483df0ca7ef890b37d06a259d50148867f52c7ad4fb8ada8ee32df9809d08737",
+    "figures/win_rate_by_solver.svg": "f7e4505f5f08ef609d76f5f1e0e4fd9be947082fb5efbbed5f163426c64d35c4"
+  }
+}

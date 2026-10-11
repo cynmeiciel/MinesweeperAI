@@ -2,10 +2,11 @@
 from __future__ import annotations
 
 import random
-from collections.abc import Iterable
-from dataclasses import dataclass
+from collections.abc import Callable, Iterable
+from dataclasses import dataclass, fields
 from fractions import Fraction
 from math import comb
+from time import perf_counter_ns
 from typing import Literal
 
 from minesweeper.core.board import Cell
@@ -20,16 +21,64 @@ class Component:
     constraints: tuple[Constraint, ...]
 
 
+@dataclass
+class DFSStats:
+    """Counters for a component, move or game; times are disjoint intervals."""
+
+    nodes_visited: int = 0
+    branch_points: int = 0
+    pruned_nodes: int = 0
+    forced_assignments: int = 0
+    constraint_checks: int = 0
+    propagation_passes: int = 0
+    max_depth: int = 0
+    solutions_count: int = 0
+    dfs_time_ms: float = 0.0
+    probability_time_ms: float = 0.0
+    components_count: int = 0
+    largest_component_variables: int = 0
+
+    def add(self, other: DFSStats) -> None:
+        for item in fields(self):
+            a, b = getattr(self, item.name), getattr(other, item.name)
+            setattr(self, item.name, max(a, b) if item.name in ("max_depth", "largest_component_variables") else a + b)
+
+
 class DfsSolver:
     """Run LV1/LV2, then use DFS probabilities for unresolved frontiers."""
 
     name = "lv3"
 
-    def __init__(self, rng: random.Random) -> None:
+    def __init__(
+        self,
+        rng: random.Random,
+        *,
+        opening_strategy: str = "center",
+        include_outside: bool = False,
+        variable_order: str = "degree",
+        use_propagation: bool = True,
+        guess_tiebreak: str = "info",
+        collect_stats: bool = False,
+        frontier_observer: Callable[[PlayerView, tuple[Constraint, ...]], None] | None = None,
+    ) -> None:
+        if variable_order not in ("degree", "coordinate"):
+            raise ValueError("variable_order must be degree or coordinate")
+        if guess_tiebreak not in ("info", "coordinate"):
+            raise ValueError("guess_tiebreak must be info or coordinate")
         self.last_level = 3
-        self._lv2 = ConstraintSolver(rng)
+        self._lv2 = ConstraintSolver(rng, opening_strategy=opening_strategy)
+        self._include_outside = include_outside
+        self.variable_order = variable_order
+        self.use_propagation = use_propagation
+        self.guess_tiebreak = guess_tiebreak
+        self.collect_stats = collect_stats
+        self.frontier_observer = frontier_observer
+        self.last_stats = DFSStats()
+        self.component_stats: list[DFSStats] = []
 
     def next_move(self, view: PlayerView) -> Move:
+        self.last_stats = DFSStats()
+        self.component_stats = []
         try:
             move = self._lv2.next_move(view)
             self.last_level = self._lv2.last_level
@@ -38,10 +87,18 @@ class DfsSolver:
             pass
 
         constraints = ConstraintSolver._build_constraints(view)
+        if self.frontier_observer is not None:
+            self.frontier_observer(view, tuple(constraints))
         components = self._components(constraints)
         component_solutions: list[list[dict[Cell, int]]] = []
         for component in components:
-            solutions = self._solve_component(component)
+            stats = DFSStats() if self.collect_stats else None
+            solutions = self._solve_component(component, variable_order=self.variable_order, use_propagation=self.use_propagation, stats=stats)
+            if stats is not None:
+                stats.components_count = 1
+                stats.largest_component_variables = len(component.cells)
+                self.component_stats.append(stats)
+                self.last_stats.add(stats)
             if not solutions:
                 raise SolverStuck("AI -> STUCK")
             component_solutions.append(solutions)
@@ -50,13 +107,16 @@ class DfsSolver:
         mines_left = view.total_mines - len(view.flags)
         frontier = {cell for component in components for cell in component.cells}
         outside_frontier = set(view.hidden_cells()).difference(frontier)
+        probability_start = perf_counter_ns() if self.collect_stats else 0
         probabilities, information = self._global_probabilities(
             components,
             component_solutions,
             outside_frontier,
             mines_left,
-            include_outside=False,
+            include_outside=self._include_outside,
         )
+        if self.collect_stats:
+            self.last_stats.probability_time_ms = (perf_counter_ns() - probability_start) / 1_000_000
         if not probabilities:
             hidden = view.hidden_cells()
             if not hidden:
@@ -78,7 +138,7 @@ class DfsSolver:
                 mines_left=mines_left,
                 certain=probability == 0,
             )
-        return self._choose_move(probabilities, information, mines_left=mines_left)
+        return self._choose_move(probabilities, information, mines_left=mines_left, guess_tiebreak=self.guess_tiebreak)
 
     @classmethod
     def _global_probabilities(
@@ -158,6 +218,7 @@ class DfsSolver:
         information: dict[Cell, int],
         *,
         mines_left: int = 0,
+        guess_tiebreak: str = "info",
     ) -> Move:
         """Search every frontier for certainty before allowing a probability guess."""
         if not probabilities:
@@ -173,7 +234,7 @@ class DfsSolver:
             )
 
         candidates = [
-            (probability, -information[cell], cell, probability)
+            (probability, -information[cell] if guess_tiebreak == "info" else 0, cell, probability)
             for cell, probability in probabilities.items()
         ]
         _, _, cell, probability = min(candidates)
@@ -212,41 +273,80 @@ class DfsSolver:
         return sorted(components, key=lambda component: component.cells[0])
 
     @classmethod
-    def _solve_component(cls, component: Component) -> list[dict[Cell, int]]:
+    def _solve_component(
+        cls, component: Component, *, variable_order: str = "degree",
+        use_propagation: bool = True, stats: DFSStats | None = None,
+    ) -> list[dict[Cell, int]]:
+        if variable_order not in ("degree", "coordinate"):
+            raise ValueError("invalid variable_order")
         solutions: list[dict[Cell, int]] = []
+        start = perf_counter_ns() if stats is not None else 0
 
-        def search(assignment: dict[Cell, int]) -> None:
+        def search(assignment: dict[Cell, int], depth: int = 0) -> None:
+            if stats is not None:
+                stats.nodes_visited += 1
+                stats.max_depth = max(stats.max_depth, depth)
             assignment = dict(assignment)
-            if not cls._propagate(assignment, component.constraints):
+            feasible = cls._propagate(assignment, component.constraints, stats=stats) if use_propagation else cls._feasible(assignment, component.constraints, stats=stats)
+            if not feasible:
+                if stats is not None:
+                    stats.pruned_nodes += 1
                 return
             if len(assignment) == len(component.cells):
                 solutions.append(assignment)
+                if stats is not None:
+                    stats.solutions_count += 1
                 return
 
             unassigned = [cell for cell in component.cells if cell not in assignment]
-            scores = {
-                cell: sum(
-                    cell in constraint.cells
-                    and any(candidate not in assignment for candidate in constraint.cells)
-                    for constraint in component.constraints
-                )
-                for cell in unassigned
-            }
-            cell = min(unassigned, key=lambda candidate: (-scores[candidate], candidate))
+            if stats is not None:
+                stats.branch_points += 1
+            if variable_order == "coordinate":
+                cell = min(unassigned)
+            else:
+                scores = {
+                    cell: sum(
+                        cell in constraint.cells
+                        and any(candidate not in assignment for candidate in constraint.cells)
+                        for constraint in component.constraints
+                    )
+                    for cell in unassigned
+                }
+                cell = min(unassigned, key=lambda candidate: (-scores[candidate], candidate))
             for value in (0, 1):
                 branch = dict(assignment)
                 branch[cell] = value
-                search(branch)
+                search(branch, depth + 1)
 
-        search({})
+        try:
+            search({})
+        finally:
+            if stats is not None:
+                stats.dfs_time_ms += (perf_counter_ns() - start) / 1_000_000
         return solutions
 
     @staticmethod
-    def _propagate(assignment: dict[Cell, int], constraints: tuple[Constraint, ...]) -> bool:
+    def _feasible(assignment: dict[Cell, int], constraints: tuple[Constraint, ...], *, stats: DFSStats | None = None) -> bool:
+        """Prune contradictions without assigning variables, including at leaves."""
+        for constraint in constraints:
+            if stats is not None:
+                stats.constraint_checks += 1
+            remaining = constraint.mines - sum(assignment[c] for c in constraint.cells if c in assignment)
+            unknown = sum(c not in assignment for c in constraint.cells)
+            if remaining < 0 or remaining > unknown:
+                return False
+        return True
+
+    @staticmethod
+    def _propagate(assignment: dict[Cell, int], constraints: tuple[Constraint, ...], *, stats: DFSStats | None = None) -> bool:
         changed = True
         while changed:
+            if stats is not None:
+                stats.propagation_passes += 1
             changed = False
             for constraint in constraints:
+                if stats is not None:
+                    stats.constraint_checks += 1
                 assigned_mines = sum(assignment[cell] for cell in constraint.cells if cell in assignment)
                 unassigned = [cell for cell in constraint.cells if cell not in assignment]
                 remaining = constraint.mines - assigned_mines
@@ -259,6 +359,8 @@ class DfsSolver:
                 value = 1 if remaining == len(unassigned) else 0
                 for cell in unassigned:
                     assignment[cell] = value
+                    if stats is not None:
+                        stats.forced_assignments += 1
                     changed = True
         return True
 

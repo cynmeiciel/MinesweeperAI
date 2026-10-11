@@ -37,6 +37,16 @@ def test_run_game_requires_seed():
         run_game(GameConfig(9, 9, 10), RandomSolver)
 
 
+def test_run_game_accepts_solver_factory():
+    record = run_game(
+        GameConfig(5, 5, 3, seed=0),
+        RandomSolver,
+        solver_factory=lambda rng: RandomSolver(rng),
+    )
+
+    assert record.seed == 0
+
+
 def test_batch_is_reproducible():
     cfgs = [GameConfig(9, 9, 10)]
     a = run_batch(cfgs, "random", games=20, base_seed=100)

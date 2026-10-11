@@ -1,0 +1,170 @@
+{
+  "template_sha256": "5e465e0b6424cce1b491406b688fd24b5c2940023a1a8c65f1019ca92a430cc5",
+  "report_sha256": "96f6eac751211be07634426886dae69ea48d8fd745338d18ec059199999ed199",
+  "data_manifest_sha256": "3cff724433c31892c168bdd301b0c50a66e4cf1aee002e873b524359b6ec79be",
+  "main_comparison": [
+    {
+      "experiment_id": "random_5x5-3_opening_random_bfs_outside0",
+      "historical_wins": 104,
+      "new_wins": 104,
+      "same_win_count": true,
+      "historical_guesses_rounded": "3.16",
+      "new_guesses": 3.157
+    },
+    {
+      "experiment_id": "lv1_5x5-3_opening_center_bfs_outside0",
+      "historical_wins": 669,
+      "new_wins": 669,
+      "same_win_count": true,
+      "historical_guesses_rounded": "0",
+      "new_guesses": 0.0
+    },
+    {
+      "experiment_id": "lv2_5x5-3_opening_center_bfs_outside0",
+      "historical_wins": 798,
+      "new_wins": 798,
+      "same_win_count": true,
+      "historical_guesses_rounded": "0",
+      "new_guesses": 0.0
+    },
+    {
+      "experiment_id": "lv3_5x5-3_opening_center_bfs_outside0",
+      "historical_wins": 899,
+      "new_wins": 899,
+      "same_win_count": true,
+      "historical_guesses_rounded": "0.20",
+      "new_guesses": 0.201
+    },
+    {
+      "experiment_id": "random_9x9-10_opening_random_bfs_outside0",
+      "historical_wins": 0,
+      "new_wins": 0,
+      "same_win_count": true,
+      "historical_guesses_rounded": "4.38",
+      "new_guesses": 4.381
+    },
+    {
+      "experiment_id": "lv1_9x9-10_opening_center_bfs_outside0",
+      "historical_wins": 623,
+      "new_wins": 623,
+      "same_win_count": true,
+      "historical_guesses_rounded": "0",
+      "new_guesses": 0.0
+    },
+    {
+      "experiment_id": "lv2_9x9-10_opening_center_bfs_outside0",
+      "historical_wins": 791,
+      "new_wins": 791,
+      "same_win_count": true,
+      "historical_guesses_rounded": "0",
+      "new_guesses": 0.0
+    },
+    {
+      "experiment_id": "lv3_9x9-10_opening_center_bfs_outside0",
+      "historical_wins": 961,
+      "new_wins": 961,
+      "same_win_count": true,
+      "historical_guesses_rounded": "0.11",
+      "new_guesses": 0.107
+    },
+    {
+      "experiment_id": "random_16x16-40_opening_random_bfs_outside0",
+      "historical_wins": 0,
+      "new_wins": 0,
+      "same_win_count": true,
+      "historical_guesses_rounded": "5.36",
+      "new_guesses": 5.36
+    },
+    {
+      "experiment_id": "lv1_16x16-40_opening_center_bfs_outside0",
+      "historical_wins": 250,
+      "new_wins": 250,
+      "same_win_count": true,
+      "historical_guesses_rounded": "0",
+      "new_guesses": 0.0
+    },
+    {
+      "experiment_id": "lv2_16x16-40_opening_center_bfs_outside0",
+      "historical_wins": 544,
+      "new_wins": 544,
+      "same_win_count": true,
+      "historical_guesses_rounded": "0",
+      "new_guesses": 0.0
+    },
+    {
+      "experiment_id": "lv3_16x16-40_opening_center_bfs_outside0",
+      "historical_wins": 870,
+      "new_wins": 870,
+      "same_win_count": true,
+      "historical_guesses_rounded": "0.43",
+      "new_guesses": 0.426
+    },
+    {
+      "experiment_id": "random_16x30-99_opening_random_bfs_outside0",
+      "historical_wins": 0,
+      "new_wins": 0,
+      "same_win_count": true,
+      "historical_guesses_rounded": "5.36",
+      "new_guesses": 5.3566666666666665
+    },
+    {
+      "experiment_id": "lv1_16x30-99_opening_center_bfs_outside0",
+      "historical_wins": 0,
+      "new_wins": 0,
+      "same_win_count": true,
+      "historical_guesses_rounded": "0",
+      "new_guesses": 0.0
+    },
+    {
+      "experiment_id": "lv2_16x30-99_opening_center_bfs_outside0",
+      "historical_wins": 12,
+      "new_wins": 12,
+      "same_win_count": true,
+      "historical_guesses_rounded": "0",
+      "new_guesses": 0.0
+    },
+    {
+      "experiment_id": "lv3_16x30-99_opening_center_bfs_outside0",
+      "historical_wins": 144,
+      "new_wins": 144,
+      "same_win_count": true,
+      "historical_guesses_rounded": "2.67",
+      "new_guesses": 2.6733333333333333
+    }
+  ],
+  "bfs_dfs_deterministic_fields_equal": true,
+  "updated_paragraph_indices": [
+    220,
+    221,
+    223,
+    227,
+    229,
+    233,
+    235,
+    236,
+    240,
+    242,
+    246,
+    248,
+    253,
+    254,
+    257,
+    262,
+    265,
+    279,
+    284,
+    314
+  ],
+  "updated_tables": [
+    6,
+    7,
+    8,
+    9,
+    11
+  ],
+  "replaced_figures": [
+    "win_rate_by_solver",
+    "win_rate_by_density"
+  ],
+  "pagination": "Not rendered; update Word TOC/page fields before submission."
+}

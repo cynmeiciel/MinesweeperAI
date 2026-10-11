@@ -9,6 +9,9 @@ description = "Configurable Minesweeper with GUI, solver interface and analysis 
 requires-python = ">=3.11"
 dependencies = []
 
+[project.optional-dependencies]
+report = ["matplotlib>=3.8"]
+
 [dependency-groups]
 dev = ["pytest>=8"]
 

@@ -1,0 +1,20 @@
+{
+  "raw_manifest_sha256": "87f0310003da92c2d51e63aef8b0a0af4ba03188875f8a12f3c4503a2d52e2ce",
+  "report_audit": "../../reports/Bao_cao_Minesweeper_AI_cap_nhat_ablation.audit.json",
+  "artifact_sha256": {
+    "README.md": "ea2f474233a38ca02776e06c1f25e17d513997eee86edb234222b33f286e3d97",
+    "ablation_frontiers.csv": "8f8fa624f83e06b05da7b23764e8239febb46c43579d4b14318d201526a18e00",
+    "ablation_games.csv": "e976c42792b97fe05f6948339135c80e0cf281faa5229f73b100cc4f57cedde3",
+    "ablation_summary.csv": "25e3ecef678dffd4c3e78464973d976767da290f39d11d1179526e108519b626",
+    "ablation_tables.md": "ccd534b08183e3feec4d3b912c58135e83ec31977bdbe50372feb1e30246dff9",
+    "baseline_compatibility.json": "e795b6fceb83bc5f35107a6a3082b96645216c6929310f71a1e5497bec327327",
+    "collection_games.csv": "3c61d2934f9af92b8562786aaece54c2bdb72763a89eaea3df7848821a054f33",
+    "figures/ablation_info.png": "25d189ee6884db04126e85713981887318908fcaf65350b8f080211283b8b777",
+    "figures/ablation_info.svg": "71cb416ab9483dd96001110dff6fc913214f6ef36457d48c278c9a2a0303ba1c",
+    "figures/ablation_search.png": "0ee834fb893e760858c944fc15e25fa235a0b878eb0636ad268a5289f066e435",
+    "figures/ablation_search.svg": "30f48f3b5ca279b6ccb2e25775efc22913d7990e734fe22a5a71f68ad7f654a6",
+    "frontiers.jsonl": "514d6f448a87b90b3a859c87cb6721c31129818d97c958fdfe55d48c0c62c5c3",
+    "report_validation.json": "f84f7ad3c49545d67681c18cbddfec15a26997dcd982404528b708b68a00442a",
+    "validation.json": "5ee27e12be4b9732f1a50c3365ce7c0ca3c28bb83b8cf57c896d8e0125bbfe0f"
+  }
+}

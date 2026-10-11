@@ -21,6 +21,12 @@ solver runs in the background: the window stays responsive, the line below
 shows `Thinking… 3.2 s`, and **Cancel** stops waiting (a manual move, new game
 or solver change cancels too).
 
+See [solver-levels.md](docs/solver-levels.md) for the LV1, LV2, and LV3
+algorithms.
+
+See [docs/report/README.md](docs/report/README.md) for reproducible experiment
+runs, summaries, and figures.
+
 ## Options
 
 | Option | Values | Default |

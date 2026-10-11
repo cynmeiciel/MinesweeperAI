@@ -1,0 +1,86 @@
+[1/43] starting random_5x5-3_opening_random_bfs_outside0: 1000 games
+[1/43] random_5x5-3_opening_random_bfs_outside0: 1000/1000
+[2/43] starting random_9x9-10_opening_random_bfs_outside0: 1000 games
+[2/43] random_9x9-10_opening_random_bfs_outside0: 1000/1000
+[3/43] starting random_16x16-40_opening_random_bfs_outside0: 1000 games
+[3/43] random_16x16-40_opening_random_bfs_outside0: 1000/1000
+[4/43] starting random_16x30-99_opening_random_bfs_outside0: 300 games
+[4/43] random_16x30-99_opening_random_bfs_outside0: 300/300
+[5/43] starting lv1_5x5-3_opening_center_bfs_outside0: 1000 games
+[5/43] lv1_5x5-3_opening_center_bfs_outside0: 1000/1000
+[6/43] starting lv1_9x9-10_opening_center_bfs_outside0: 1000 games
+[6/43] lv1_9x9-10_opening_center_bfs_outside0: 1000/1000
+[7/43] starting lv1_16x16-40_opening_center_bfs_outside0: 1000 games
+[7/43] lv1_16x16-40_opening_center_bfs_outside0: 1000/1000
+[8/43] starting lv1_16x30-99_opening_center_bfs_outside0: 300 games
+[8/43] lv1_16x30-99_opening_center_bfs_outside0: 300/300
+[9/43] starting lv2_5x5-3_opening_center_bfs_outside0: 1000 games
+[9/43] lv2_5x5-3_opening_center_bfs_outside0: 1000/1000
+[10/43] starting lv2_9x9-10_opening_center_bfs_outside0: 1000 games
+[10/43] lv2_9x9-10_opening_center_bfs_outside0: 1000/1000
+[11/43] starting lv2_16x16-40_opening_center_bfs_outside0: 1000 games
+[11/43] lv2_16x16-40_opening_center_bfs_outside0: 1000/1000
+[12/43] starting lv2_16x30-99_opening_center_bfs_outside0: 300 games
+[12/43] lv2_16x30-99_opening_center_bfs_outside0: 300/300
+[13/43] starting lv3_5x5-3_opening_center_bfs_outside0: 1000 games
+[13/43] lv3_5x5-3_opening_center_bfs_outside0: 1000/1000
+[14/43] starting lv3_9x9-10_opening_center_bfs_outside0: 1000 games
+[14/43] lv3_9x9-10_opening_center_bfs_outside0: 1000/1000
+[15/43] starting lv3_16x16-40_opening_center_bfs_outside0: 1000 games
+[15/43] lv3_16x16-40_opening_center_bfs_outside0: 1000/1000
+[16/43] starting lv3_16x30-99_opening_center_bfs_outside0: 300 games
+[16/43] lv3_16x30-99_opening_center_bfs_outside0: 300/300
+[17/43] starting lv3_9x9-10_unsafe_center_bfs_outside0: 1000 games
+[17/43] lv3_9x9-10_unsafe_center_bfs_outside0: 1000/1000
+[18/43] starting lv3_9x9-10_safe_center_bfs_outside0: 1000 games
+[18/43] lv3_9x9-10_safe_center_bfs_outside0: 1000/1000
+[19/43] starting lv3_9x9-5_opening_center_bfs_outside0: 500 games
+[19/43] lv3_9x9-5_opening_center_bfs_outside0: 500/500
+[20/43] starting lv3_9x9-6_opening_center_bfs_outside0: 500 games
+[20/43] lv3_9x9-6_opening_center_bfs_outside0: 500/500
+[21/43] starting lv3_9x9-7_opening_center_bfs_outside0: 500 games
+[21/43] lv3_9x9-7_opening_center_bfs_outside0: 500/500
+[22/43] starting lv3_9x9-8_opening_center_bfs_outside0: 500 games
+[22/43] lv3_9x9-8_opening_center_bfs_outside0: 500/500
+[23/43] starting lv3_9x9-9_opening_center_bfs_outside0: 500 games
+[23/43] lv3_9x9-9_opening_center_bfs_outside0: 500/500
+[24/43] starting lv3_9x9-11_opening_center_bfs_outside0: 500 games
+[24/43] lv3_9x9-11_opening_center_bfs_outside0: 500/500
+[25/43] starting lv3_9x9-12_opening_center_bfs_outside0: 500 games
+[25/43] lv3_9x9-12_opening_center_bfs_outside0: 500/500
+[26/43] starting lv3_9x9-13_opening_center_bfs_outside0: 500 games
+[26/43] lv3_9x9-13_opening_center_bfs_outside0: 500/500
+[27/43] starting lv3_9x9-14_opening_center_bfs_outside0: 500 games
+[27/43] lv3_9x9-14_opening_center_bfs_outside0: 500/500
+[28/43] starting lv3_9x9-15_opening_center_bfs_outside0: 500 games
+[28/43] lv3_9x9-15_opening_center_bfs_outside0: 500/500
+[29/43] starting lv3_9x9-16_opening_center_bfs_outside0: 500 games
+[29/43] lv3_9x9-16_opening_center_bfs_outside0: 500/500
+[30/43] starting lv3_9x9-17_opening_center_bfs_outside0: 500 games
+[30/43] lv3_9x9-17_opening_center_bfs_outside0: 500/500
+[31/43] starting lv3_9x9-18_opening_center_bfs_outside0: 500 games
+[31/43] lv3_9x9-18_opening_center_bfs_outside0: 500/500
+[32/43] starting lv3_9x9-19_opening_center_bfs_outside0: 500 games
+[32/43] lv3_9x9-19_opening_center_bfs_outside0: 500/500
+[33/43] starting lv3_9x9-20_opening_center_bfs_outside0: 500 games
+[33/43] lv3_9x9-20_opening_center_bfs_outside0: 500/500
+[34/43] starting lv3_9x9-21_opening_center_bfs_outside0: 500 games
+[34/43] lv3_9x9-21_opening_center_bfs_outside0: 500/500
+[35/43] starting lv3_9x9-22_opening_center_bfs_outside0: 500 games
+[35/43] lv3_9x9-22_opening_center_bfs_outside0: 500/500
+[36/43] starting lv3_9x9-23_opening_center_bfs_outside0: 500 games
+[36/43] lv3_9x9-23_opening_center_bfs_outside0: 500/500
+[37/43] starting lv3_9x9-24_opening_center_bfs_outside0: 500 games
+[37/43] lv3_9x9-24_opening_center_bfs_outside0: 500/500
+[38/43] starting lv3_9x9-10_opening_center_dfs_outside0: 1000 games
+[38/43] lv3_9x9-10_opening_center_dfs_outside0: 1000/1000
+[39/43] starting lv3_9x9-10_safe_corner_bfs_outside0: 1000 games
+[39/43] lv3_9x9-10_safe_corner_bfs_outside0: 1000/1000
+[40/43] starting lv3_9x9-10_opening_corner_bfs_outside0: 1000 games
+[40/43] lv3_9x9-10_opening_corner_bfs_outside0: 1000/1000
+[41/43] starting lv3_9x9-10_opening_center_bfs_outside1: 1000 games
+[41/43] lv3_9x9-10_opening_center_bfs_outside1: 1000/1000
+[42/43] starting lv3_16x16-40_opening_center_bfs_outside1: 1000 games
+[42/43] lv3_16x16-40_opening_center_bfs_outside1: 1000/1000
+[43/43] starting lv3_16x30-99_opening_center_bfs_outside1: 300 games
+[43/43] lv3_16x30-99_opening_center_bfs_outside1: 300/300

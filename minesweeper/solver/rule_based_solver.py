@@ -17,22 +17,28 @@ class RuleBasedSolver:
 
     name = "lv1"
 
-    def __init__(self, rng: random.Random) -> None:
+    def __init__(self, rng: random.Random, *, opening_strategy: str = "center") -> None:
+        if opening_strategy not in {"center", "corner"}:
+            raise ValueError("opening_strategy must be 'center' or 'corner'")
         self.last_level = 1
+        self._opening_strategy = opening_strategy
         del rng  # The LV1 solver never guesses.
 
     def next_move(self, view: PlayerView) -> Move:
         if not self._open_cells(view):
             hidden = view.hidden_cells()
             if hidden:
-                cell = min(
-                    hidden,
-                    key=lambda candidate: (
-                        abs(2 * candidate[0] - (view.rows - 1))
-                        + abs(2 * candidate[1] - (view.cols - 1)),
-                        candidate,
-                    ),
-                )
+                if self._opening_strategy == "corner" and (0, 0) in hidden:
+                    cell = (0, 0)
+                else:
+                    cell = min(
+                        hidden,
+                        key=lambda candidate: (
+                            abs(2 * candidate[0] - (view.rows - 1))
+                            + abs(2 * candidate[1] - (view.cols - 1)),
+                            candidate,
+                        ),
+                    )
                 reason = f"[Opening] REVEAL {cell}"
                 log.info(reason)
                 return Move("reveal", cell, reason, certain=True)
